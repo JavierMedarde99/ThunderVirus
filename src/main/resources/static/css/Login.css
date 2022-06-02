@@ -1,0 +1,88 @@
+
+
+*{
+	 box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#mainRegistro{
+	display:flex;
+	flex-flow: row nowrap;
+	margin: 0;
+    padding: 0;
+}
+
+div#videoThunder{
+	width: 90%;
+	height: 100%;
+}
+
+div#registro{
+	width: 50%;
+	height: 100%;
+	margin-right: 2rem;
+	
+	padding: 1rem;
+}
+
+div#cabecera{
+	background-color: #A304F3;
+}
+
+div#cuerpo{
+	height: 10%;
+	background-color: #F3A304;
+}
+
+input {
+	border: solid 2px #A304F3;
+	
+}
+
+div#izquierda{
+	width: 50%;
+}
+
+div#derecha{
+	width: 50%;
+}
+
+button.btn{
+	background-color: #A304F3;
+	color:white;
+}
+
+button.btn:hover{
+	background-color: #8103c1;
+	color:white;
+}
+
+div#cabecera > img{
+	height: 10rem;
+	margin-left: 40%;
+}
+
+p.error{
+	color:red;
+	text-align: center;
+}
+
+div#boton{
+	 display: flex;
+    align-items: center;
+    margin-left: 40%;
+}
+
+p.underForm{
+	text-align: center;
+	padding-bottom: 5rem;
+	padding-top: 2rem;
+}
+

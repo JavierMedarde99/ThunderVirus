@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" lang="es">
+<title>registro</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+
+<LINK REL=StyleSheet HREF=css/Login.css TYPE="text/css" MEDIA=screen>
+</head>
+<body>
+	<div id="mainRegistro">
+		<div id="videoThunder"></div>
+		<div id="registro">
+			<div id="cabecera">
+				<img src="images/thunder_virus_logo.png" class="img-fluid"
+					alt="Logo">
+			</div>
+			<div id="cuerpo">
+				<form class="row g-3 needs-validation"
+				th:action="@{/registro}" method="post" th:object="${usuariodto}">
+					<div id="izquierda">
+						<div class="mb-2 p-1">
+							<label for="usuario" class="form-label">Usuario </label> <input
+								type="text" class="form-control" id="usuario" name="usuario"  required>
+						</div>
+						<p class="error" th:if="${ErrorUsuarioNombre}">El usuario esta repetido</p>
+						<div class="mb-2 p-1">
+							<label for="nombre" class="form-label">Nombre completo </label> <input
+								type="text" class="form-control" id="nombre" name="nombreCompleto" required>
+						</div>
+						<div class="mb-3 p-1">
+							<label for="email" class="form-label">Email </label> <input
+								type="email" class="form-control" id="email"
+								placeholder="nombre@ejemplo.com" name="email" required>
+						</div>
+						<div class="mb-3 p-1">
+							<label for="clave" class="form-label">Contraseña </label> <input
+								type="password" class="form-control" id="clave" name="clave" required>
+						</div>
+						
+					</div>
+					<div id="derecha">
+					<div class="mb-3 p-1">
+							<label for="claveRep" class="form-label">Repetir
+								contraseña </label> <input type="password" class="form-control"
+								id="claveRep" name="claveRe" required>
+								<p class="error" th:if="${ErrorClave}">La contraseña no son iguales </p>
+						</div>
+						<div class="mb-3 p-1">
+							<label for="fech_nac" class="form-label">Fecha de
+								nacimiento </label> <input type="date" class="form-control"
+								id="fech_nac" name="fecha_nac" required >
+						</div>
+						<div class="mb-3 p-1">
+							<label for="foto" class="form-label">Foto de perfil</label> <input
+								class="form-control" type="file" id="foto" accept="image/png,image/jpeg" name="foto">
+						</div>
+						<div class="form-check form-switch ">
+							<input class="form-check-input" type="checkbox" role="switch"
+								id="terminos" checked required> <label class="form-check-label"
+								for="terminos">Acepto los términos y condiciones de
+								ThunderVirus</label>
+						</div>
+						
+					</div>
+					<div class="mb-3" id="boton">
+							<button class="btn" type="submit" id="btnRegistrar">Registrarse</button>
+						</div>
+				</form>
+				<p class="underForm">
+							¿Ya tienes una cuenta? <a th:href="@{/}">Inicie sesión</a>
+						</p>
+				<div id="piePagina">
+				
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+</body>
+</html>
