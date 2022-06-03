@@ -28,7 +28,6 @@ div#registro{
 	width: 50%;
 	height: 100%;
 	margin-right: 2rem;
-	
 	padding: 1rem;
 }
 
@@ -77,7 +76,7 @@ p.error{
 div#boton{
 	 display: flex;
     align-items: center;
-    margin-left: 40%;
+    margin-left: 35%;
 }
 
 p.underForm{
@@ -86,3 +85,28 @@ p.underForm{
 	padding-top: 2rem;
 }
 
+div#footer{
+	background-color: #8103c1;
+	margin: 0;
+	height: 17rem;
+}
+
+div#socialMedia{
+	padding-top: 2rem;
+	display: flex;
+	justify-content: space-around;
+}
+
+img#twitch{
+	width: 48px;
+	height: 48px;
+}
+
+div#privacidad{
+	margin-top: 2rem;
+}
+
+div#privacidad > p{
+	text-align: center;
+	color : white;
+}
