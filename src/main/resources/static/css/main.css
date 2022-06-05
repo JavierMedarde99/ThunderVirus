@@ -21,6 +21,10 @@ header{
 	background-color: #A304F3;
 }
 
+div#cabecera{
+	height: 7rem;
+}
+
 img {
 	max-height: 7rem;
 	margin-left : 45%;
@@ -44,6 +48,13 @@ li > a > p{
 	font-weight: bolder;
 }
 
-div.navbar-nav{
-	width: 100%
+
+nav.navbar{
+	  margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+img#avatar{
+	height: 2rem;
 }

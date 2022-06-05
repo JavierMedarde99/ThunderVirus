@@ -22,22 +22,30 @@ div#mainRegistro{
 div#videoThunder{
 	width: 90%;
 	height: 100%;
+	margin: 0;
+    padding: 0;
 }
 
 div#registro{
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	margin-right: 2rem;
 	padding: 1rem;
+	margin: 0;
+    padding: 0;
 }
 
 div#cabecera{
 	background-color: #A304F3;
+	margin: 0;
+    padding: 0;
 }
 
 div#cuerpo{
-	height: 10%;
+	
 	background-color: #F3A304;
+	margin: 0;
+    padding: 0;
 }
 
 input {
@@ -87,8 +95,9 @@ p.underForm{
 
 div#footer{
 	background-color: #8103c1;
+	height: 18rem;
 	margin: 0;
-	height: 17rem;
+    padding: 0;
 }
 
 div#socialMedia{
