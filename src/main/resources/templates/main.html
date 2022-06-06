@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8" lang="es">
 <title>Inicio</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -13,35 +13,138 @@
 </head>
 <body>
 	<header>
-	<!-- Logog -->
-		<div id="cabecera"><a th:href="@{/}"><img src="images/thunder_virus_logo.png"
-			class="img-fluid" alt="Logo"></a></div>
-			<!-- menu de la pagina -->
-		<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav m-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{/perfil}"><img id="avatar" src="images/avatar.png" alt="avatar"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" th:href="@{/}"><p>Inicio</p></a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link disabled" th:href="@{/evento}"><p>Evento</p></a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link active" th:href="@{/Merchandising}"><p>Merchandising</p></a>
-        </li>
-         <li class="nav-item dropdown">
-            <a class="nav-link active" href="#"><p>jugadores</p></a>
-        </li>
-      </ul>
+		<!-- Logog -->
+		<div id="cabecera">
+			<a th:href="@{/}"><img  src="images/thunder_virus_logo.png"
+				class="img-fluid logo" alt="Logo"></a>
+		</div>
+		<!-- menu de la pagina -->
+		<nav class="navbar navbar-expand bg-light">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav m-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/perfil}"><img id="avatar"
+								src="images/avatar.png" alt="avatar"></a></li>
+						<li class="nav-item"><a class="nav-link active"
+							th:href="@{/}"><p>Inicio</p></a></li>
+						<li class="nav-item"><a class="nav-link disabled"
+							th:href="@{/evento}"><p>Evento</p></a></li>
+						<li class="nav-item dropdown" id="jugadores"><a
+							class="nav-link dropdown-toggle d-flex" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+								<p class="mr-1">Jugadores</p>
+						</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/javi}"><p>Javi</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link active"
+							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
 
-    </div>
-  </div>
-</nav>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
 	</header>
-	<main></main>
+	<main>
+		<div id="presentacion">
+			<div id="quienesSomos">
+				<h2>¿Quienes somos?</h2>
+				<img src="" alt="QuienesSomos" />
+				<p>
+					Somos un grupo de amigos que se aventuro a hacer su propio equipo
+					de esport.<br> Tras nuestros grandes avances en los
+					videojuegos decidimos meternos en un nuevo reto.<br> Estamos
+					para dar mucho entretenimiento a nuestros usuarios y demostrar al
+					mundo lo que somos capaces de hacer en nuestro ambito de los
+					videojuegos
+				</p>
+			</div>
+			<div id="Nuestro equipo">
+				<h2>Nuestro equipo</h2>
+				<img src="" alt="NuestroEquipo" />
+				<p>Nuestro equipo de esport, el cual ha participado en varios
+					torneos de esport y con mucha experencia de videojugadores, se
+					compone de seis integrantes los cuales son</p>
+			</div>
+		</div>
+
+		<div id="jugadoresMain">
+			<div class="jugadores">
+				<h3>Javi “jajavimed”</h3>
+				<img src="" alt="Javi" class="img-fluid rounded" />
+				<p>Javi jugador de varios videojuegos del equipo cordinador del
+					equipo en tema financioeros.</p>
+				<a th:href="@{/javi}"><p>Mas información</p></a>
+			</div>
+			<div class="jugadores">
+				<h3>Antonio “ThunderAntonio”</h3>
+				<img src="" alt="Antonio" class="img-fluid rounded"/>
+				<p>Antonio el mejor jugador que tenemos en la plantilla el cual
+					puede llegar a sorprender al mas verteranos de dichos juegos.</p>
+				<a th:href="@{/antonio}"><p>Mas información</p></a>
+			</div>
+			<div class="jugadores">
+				<h3>Ivan “Navi3b”</h3>
+				<img src="" alt="Ivan" class="img-fluid rounded"/>
+				<p>Ivan el jugador con mas horas echadas a cada uno de los
+					videojuegos que hechan. Puede que su tecnica no sea muy buena pero
+					siempre eficad en el juego.</p>
+				<a th:href="@{/ivan}"><p>Mas información</p></a>
+			</div>
+			<div class="jugadores">
+				<h3>Adrian “darkness”</h3>
+				<img src="" alt="Adrian" class="img-fluid rounded"/>
+				<p>Adrian el jugador mas impulsivo del equipo, capaz de llegar
+					lo mas lejos que nadie por ganar y darle una victoria al equipo.</p>
+				<a th:href="@{/adrian}"><p>Mas información</p></a>
+			</div>
+			<div class="jugadores">
+				<h3>Angie “srapatata”</h3>
+				<img src="" alt="Angie" class="img-fluid rounded" />
+				<p>Angie la chica del equipo la cual es la que lleva todas las
+					tecnicas del equipo y orgnizadoras de las estrategias de juego</p>
+				<a th:href="@{/angie}"><p>Mas información</p></a>
+			</div>
+			<div class="jugadores">
+				<h3>Toño “patata”</h3>
+				<img src="" alt="toño" class="img-fluid rounded"/>
+				<p>Toño nuesro profesinal en el entorno de juegos de moviles. El
+					jugador con los dedos mas rapidos en todo el entono de juegos de
+					mobiles</p>
+				<a th:href="@{/toño}"><p>Mas información</p></a>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div id="socialMedia">
+			<img class="icon" src="images/instagram.png" alt="instagram"> 
+			<img class="icon" src="images/youtube.png" alt="youtube"> 
+			<img class="icon" src="images/twitch.png" alt="twitch"> 
+			<img class="icon" src="images/twitter.png" alt="twitter"> 
+			<img class="icon" src="images/tiktok.png" alt="tiktok">
+		</div>
+		<div id="logoFooter">
+		<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
+				<p>copyright © todos los derechos reservados 2022</p>
+		</div>
+		<div id="politica">
+		<p>Aviso legal</p>
+		<p>Política de cookies</p>
+		<p>Política de privacidad</p>
+		</div>
+	</footer>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
 </body>
 </html>
