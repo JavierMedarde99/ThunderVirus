@@ -121,6 +121,7 @@ div.jugadores > a > p{
 footer{
 	background-color:  #A304F3;
 	width: 100%;
+	height: 24%;
 	display: flex;
 	flex-flow: row nowrap;
 }
@@ -152,9 +153,42 @@ div#logoFooter > p{
 
 div#politica{
 	width: 33%;
+	
 }
 
 div#politica > p{
 	text-align: center;
 	color:white;
+	padding: 2%;
+	margin-top: 2rem;
+}
+
+div#imagenPerfil{
+	width: 30%;
+}
+
+form#form-perfil{
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%
+}
+
+div#perfilCompleto{
+	width: 100%;
+}
+
+div#izq-form{
+	display: flex;
+	flex-flow : column nowrap;
+	width: 45%;
+}
+
+div#der-form{
+	display: flex;
+	flex-flow : column nowrap;
+	width: 45%;
+}
+
+main{
+	width: 100%;
 }
