@@ -23,8 +23,8 @@ public class Usuarios {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String usuario;
-	private String clave;
+	private String username;
+	private String password;
 	private String email;
 	private String foto;
 	private String nombreCompleto;
@@ -43,8 +43,8 @@ public class Usuarios {
 	//registro
 	public Usuarios(String usuario, String clave,String foto, String email, String nombreCompleto, String fecha_nac,Timestamp fecha_ini_usu) {
 		super();
-		this.usuario = usuario;
-		this.clave = clave;
+		this.username = usuario;
+		this.password = clave;
 		this.foto=foto;
 		this.email = email;
 		this.nombreCompleto = nombreCompleto;

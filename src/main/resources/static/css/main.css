@@ -17,12 +17,13 @@ li {
 
 header{
 	width: 100%;
-	height: 12%;
-	background-color: #A304F3;
+	height: 100%;
+	
 }
 
 div#cabecera{
 	height: 7rem;
+	background-color: #A304F3;
 }
 
 img {

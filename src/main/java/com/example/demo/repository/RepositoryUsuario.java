@@ -13,9 +13,11 @@ import com.example.demo.entity.Usuarios;
 @Repository
 public interface RepositoryUsuario extends JpaRepository<Usuarios, Long>{
 
-	@Query(value= "SELECT * FROM usuarios WHERE usuario =:usuario",nativeQuery=true)
-	Optional<Usuarios> checkUsuario(@Param("usuario")String usuario);
+	@Query(value= "SELECT * FROM usuarios WHERE username =:username",nativeQuery=true)
+	Optional<Usuarios> checkUsuario(@Param("username")String usuario);
 	
-	@Query(value= "SELECT * FROM usuarios WHERE usuario =:usuario and clave =:clave",nativeQuery=true)
-	Optional<Usuarios> checkbdUsusario(@Param("usuario")String usuario,@Param("clave")String clave);
+	@Query(value= "SELECT * FROM usuarios WHERE username =:username and password =:password",nativeQuery=true)
+	Optional<Usuarios> checkbdUsusario(@Param("username")String usuario,@Param("password")String clave);
+	
+	  Optional<Usuarios> findByUsername(String username);
 }

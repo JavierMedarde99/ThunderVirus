@@ -14,7 +14,7 @@
 <body>
 	<header>
 	<!-- Logog -->
-		<div id="cabecera"><a th:href="@{/main}"><img src="images/thunder_virus_logo.png"
+		<div id="cabecera"><a th:href="@{/}"><img src="images/thunder_virus_logo.png"
 			class="img-fluid" alt="Logo"></a></div>
 			<!-- menu de la pagina -->
 		<nav class="navbar navbar-expand-lg bg-light">
@@ -22,16 +22,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><img id="avatar" src="images/avatar.png" alt="avatar"></a>
+          <a class="nav-link active" aria-current="page" th:href="@{/perfil}"><img id="avatar" src="images/avatar.png" alt="avatar"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#"><p>Inicio</p></a>
+          <a class="nav-link active" th:href="@{/}"><p>Inicio</p></a>
         </li>
          <li class="nav-item">
-          <a class="nav-link disabled"><p>Evento</p></a>
+          <a class="nav-link disabled" th:href="@{/evento}"><p>Evento</p></a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link active" href="#"><p>Merchandising</p></a>
+            <a class="nav-link active" th:href="@{/Merchandising}"><p>Merchandising</p></a>
         </li>
          <li class="nav-item dropdown">
             <a class="nav-link active" href="#"><p>jugadores</p></a>
@@ -42,5 +42,6 @@
   </div>
 </nav>
 	</header>
+	<main></main>
 </body>
 </html>

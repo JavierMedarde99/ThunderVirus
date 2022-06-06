@@ -23,12 +23,12 @@ public class RegistroUsuarioController {
 	@Autowired
 	private RepositoryUsuario reposiUsuario;
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String mostrarLogin() {
 		return "login";
 	}
 	
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String mostrarMain() {
 		return "main";
 	}
@@ -47,21 +47,28 @@ public class RegistroUsuarioController {
 	}
 		usuarioService.saveUser(usuariodto);
 		
-		return "main";
+		return mostrarMain();
 	}
 	
-	@PostMapping("/login")
-	public String IniciarUsuario(@ModelAttribute(name = "usuariodto") UsuarioIniciarSesionDTO  usuariodto,Model model) {
-		if(reposiUsuario.checkbdUsusario(usuariodto.getUsuario(), usuariodto.getClave()).isEmpty()) {
-			model.addAttribute("ErrorUsuario", true);
-			return "login";
-		}
-	return "main";
-	}
+	
 	
 	@GetMapping("/registroland")
 	public String mostrarRegistro() {
 		return "registro";
 	}
 	
+	@GetMapping("/perfil")
+	public String mostrarPerfil() {
+		return "perfil";
+	}
+	
+	@GetMapping("/evento")
+	public String mostrarEvento() {
+		return "evento";
+	}
+	
+	@GetMapping("/Merchandising")
+	public String mostrarMerchandising() {
+		return "Merchandising";
+	}
 }
