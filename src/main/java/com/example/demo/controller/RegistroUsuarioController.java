@@ -20,7 +20,7 @@ import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.repository.RepositoryUsuario;
 import com.example.demo.service.UsuarioService;
-import com.example.demo.utils.FileUploadUtil;
+
 
 @Controller
 @RequestMapping
