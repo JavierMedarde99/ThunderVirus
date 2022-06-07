@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+
 import java.sql.Timestamp;
 import java.time.Instant;
 
@@ -17,13 +18,15 @@ public class UsuarioServicioImpl implements UsuarioService{
 	@Autowired
 	private RepositoryUsuario usuarioRepository;
 	
+	
+	
 	@Override
 	public Usuarios saveUser(UsuarioRegistroDTO registroDTO) {
 		Timestamp ts = Timestamp.from(Instant.now());
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	    String encodedPassword = passwordEncoder.encode(registroDTO.getClave());
-	    registroDTO.setClave(encodedPassword);
-		Usuarios usuario = new Usuarios(registroDTO.getUsuario(),registroDTO.getClave(),registroDTO.getFoto(),registroDTO.getEmail(),registroDTO.getNombreCompleto(),registroDTO.getFecha_nac(),ts);
+	    String encodedPassword = passwordEncoder.encode(registroDTO.getPassword());
+	    registroDTO.setPassword(encodedPassword);
+		Usuarios usuario = new Usuarios(registroDTO.getUsername(),registroDTO.getPassword(),null,registroDTO.getEmail(),registroDTO.getNombreCompleto(),registroDTO.getFecha_nac(),ts);
 		return usuarioRepository.save(usuario);
 	}
 }

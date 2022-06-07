@@ -26,7 +26,7 @@ public class Usuarios {
 	private String username;
 	private String password;
 	private String email;
-	private String foto;
+	private String file;
 	private String nombreCompleto;
 	private String fecha_nac;
 	private Timestamp fecha_ini_usu;
@@ -41,11 +41,11 @@ public class Usuarios {
 	private Timestamp fecha_fin_sub;
 	
 	//registro
-	public Usuarios(String usuario, String clave,String foto, String email, String nombreCompleto, String fecha_nac,Timestamp fecha_ini_usu) {
+	public Usuarios(String usuario, String clave,String file, String email, String nombreCompleto, String fecha_nac,Timestamp fecha_ini_usu) {
 		super();
 		this.username = usuario;
 		this.password = clave;
-		this.foto=foto;
+		this.file=file;
 		this.email = email;
 		this.nombreCompleto = nombreCompleto;
 		this.fecha_nac = fecha_nac;
