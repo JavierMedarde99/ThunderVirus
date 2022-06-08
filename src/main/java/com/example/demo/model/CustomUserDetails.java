@@ -29,7 +29,27 @@ public class CustomUserDetails implements UserDetails{
 	    public String getUsername() {
 	        return user.getUsername();
 	    }
-	 
+	    
+	    public String getFile() {
+	        return user.getFile();
+	    }
+	    
+	    public String getNombre_completo() {
+	        return user.getNombreCompleto();
+	    }
+	    
+	    public String getEmail() {
+	        return user.getEmail();
+	    }
+	    
+	    public long getIdUsuario() {
+	    	return user.getId();
+	    }
+	    
+	    public String getFech_nac() {
+	    	return user.getFecha_nac();
+	    }
+	    
 	    @Override
 	    public boolean isAccountNonExpired() {
 	        return true;

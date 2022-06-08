@@ -121,7 +121,7 @@ div.jugadores > a > p{
 footer{
 	background-color:  #A304F3;
 	width: 100%;
-	height: 24%;
+	height: 25%;
 	display: flex;
 	flex-flow: row nowrap;
 }
@@ -164,7 +164,18 @@ div#politica > p{
 }
 
 div#imagenPerfil{
+	display:flex;
+	flex-flow:column nowrap;
 	width: 30%;
+	justify-content: center;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+div#imagenPerfil > img{
+	width: 20rem;
+	height: 29rem;
+	
 }
 
 form#form-perfil{
@@ -191,4 +202,17 @@ div#der-form{
 
 main{
 	width: 100%;
+}
+
+form#cambImagen{
+	margin-top:1rem;
+}
+
+div#perfilCompleto{
+	display:flex;
+	flex-flow: row wrap;
+}
+
+form#logout{
+	width: 50%;;
 }
