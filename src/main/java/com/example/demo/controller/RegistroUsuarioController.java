@@ -124,9 +124,8 @@ public class RegistroUsuarioController {
 	@PostMapping("/cambiarFoto")
 	public String updateFile(@RequestParam("file") MultipartFile file,@RequestParam("idusuario") long idUsuario,@RequestParam("username") String userName) {
 		String foto="";
-		Random rand = new Random(); //instance of random class
+		Random rand = new Random(); 
 	      int upperbound = 100;
-	        //generate random values from 0-24
 	      int int_random = rand.nextInt(upperbound); 
 	      
 		try {
