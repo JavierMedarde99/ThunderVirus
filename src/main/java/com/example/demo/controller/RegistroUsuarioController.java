@@ -24,12 +24,16 @@ import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.model.CustomUserDetails;
+import com.example.demo.repository.RepositoryMerchandising;
 import com.example.demo.repository.RepositoryUsuario;
 import com.example.demo.service.UsuarioService;
+
+import lombok.extern.log4j.Log4j2;
 
 
 @Controller
 @RequestMapping
+@Log4j2
 public class RegistroUsuarioController {
 
 	@Autowired
@@ -38,6 +42,9 @@ public class RegistroUsuarioController {
 	@Autowired
 	private RepositoryUsuario reposiUsuario;
 
+	@Autowired
+	private RepositoryMerchandising repositorymerchandising;
+	
 	@GetMapping("/login")
 	public String mostrarLogin() {
 		return "login";
@@ -55,6 +62,7 @@ public class RegistroUsuarioController {
 				model.addAttribute("NoSub", true);
 			}
 		}
+		log.info("entra");
 		return "main";
 	}
 
@@ -79,6 +87,7 @@ public class RegistroUsuarioController {
 				model.addAttribute("NoSub", true);
 			}
 		}
+		
 		return "perfil";
 	}
 
@@ -88,7 +97,8 @@ public class RegistroUsuarioController {
 	}
 
 	@GetMapping("/Merchandising")
-	public String mostrarMerchandising() {
+	public String mostrarMerchandising(Model model) {
+		model.addAttribute("merchandising", repositorymerchandising.findAll());
 		return "Merchandising";
 	}
 	
@@ -107,7 +117,10 @@ public class RegistroUsuarioController {
 		}
 
 		try {
-			Path filepath = Path.of("C:\\Users\\IDB36\\eclipse-workspace\\ThunderVirus2\\src\\main\\resources\\static\\images\\perfile\\"+usuariodto.getUsername()+".png");
+			
+			
+			//Path filepath = Path.of(getClass().getResource("/static/images/perfile").getPath()); 
+			Path filepath = Path.of("C:\\Users\\javie\\eclipse-workspace\\ThunderVirus\\src\\main\\resources\\static\\images\\perfile\\"+usuariodto.getUsername()+".png");
 			//Path filepath = Path.of("/resources/static/images/perfile/"+usuariodto.getUsername()+".png");
 			
 		file.transferTo(filepath);
@@ -130,7 +143,9 @@ public class RegistroUsuarioController {
 	      
 		try {
 			 foto = userName+"-"+int_random+".png";
-			Path filepath = Path.of("C:\\Users\\IDB36\\eclipse-workspace\\ThunderVirus2\\src\\main\\resources\\static\\images\\perfile\\"+foto);
+			
+			 //Path filepath = Path.of(getClass().getResource("/static/images/perfile/"+foto).getPath()); 
+			Path filepath = Path.of("C:\\Users\\javie\\eclipse-workspace\\ThunderVirus\\src\\main\\resources\\static\\images\\perfile\\"+foto);
 			//Path filepath = Path.of("/resources/static/images/perfile/"+usuariodto.getUsername()+".png");
 		file.transferTo(filepath);
 		}catch (Exception e) {
@@ -138,7 +153,7 @@ public class RegistroUsuarioController {
 		}
 		
 		usuarioService.updateFile(idUsuario, foto);
-		return "perfil";
+		return "redirect:/perfil";
 	}
 	
 	@PostMapping("/cambio")
@@ -160,7 +175,7 @@ public class RegistroUsuarioController {
 		usuarioService.updateUser(Usuarioupdate);
 		
 		
-		return "perfil";
+		return "redirect:/perfil";
 	}
 	
 	@PostMapping("/pago")
@@ -169,7 +184,7 @@ public class RegistroUsuarioController {
 		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
 		 usuarioService.subUser(tarjetaCreditoInt, idUsuario);
 		
-		return "main";
+		return "redirect:/";
 	}
 	
 	@PostMapping("/unsub")
@@ -178,7 +193,7 @@ public class RegistroUsuarioController {
 		
 		 usuarioService.unsubUser(idUsuario);
 		
-		return "main";
+		return "redirect:/";
 	}
 	
 	@PostMapping("/delUser")
