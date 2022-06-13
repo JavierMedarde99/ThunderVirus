@@ -56,17 +56,19 @@ DROP TABLE IF EXISTS `evento`;
 CREATE TABLE `evento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(124) NOT NULL,
+  `nombre` varchar(124) NOT NULL,
   `id_jugador` int(11) NOT NULL,
   `premio` varchar(50) NOT NULL,
-  `ganador` int(11) NOT NULL,
+  `ganador` int(11) DEFAULT NULL,
   `fecha_ini_evento` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `fecha_fin_evento` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `foto_evento` varchar(50) NOT NULL DEFAULT 'current_timestamp()',
+  `fecha_fin_evento` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_evento_jugadores` (`id_jugador`),
   KEY `FK_evento_usuarios` (`ganador`),
   CONSTRAINT `FK_evento_jugadores` FOREIGN KEY (`id_jugador`) REFERENCES `jugadores` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_evento_usuarios` FOREIGN KEY (`ganador`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,6 +77,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
+INSERT INTO `evento` VALUES (8,'patata','Evento especial',1,'pantalla',NULL,'2022-06-13 12:46:56','\"\"',NULL);
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,10 +92,12 @@ CREATE TABLE `jugadores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_nacimiento` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nombre_jugador` varchar(20) NOT NULL,
+  `foto` varchar(20) NOT NULL,
   `juegos` varchar(50) NOT NULL,
-  `personajes` varchar(50) NOT NULL,
+  `fecha_nac` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +106,7 @@ CREATE TABLE `jugadores` (
 
 LOCK TABLES `jugadores` WRITE;
 /*!40000 ALTER TABLE `jugadores` DISABLE KEYS */;
+INSERT INTO `jugadores` VALUES (1,'2022-06-13 12:04:46','jajavimed','','League of Legends,Valorant,Parchis,Brawl start','1999-12-11','javi'),(2,'2022-06-13 13:05:36','thunderAnotnio','','League of Legends,Valorant,Parchis,Brawl start','1999-02-15','antonio'),(3,'2022-06-13 13:41:30','Ivan3B','','League of Legends,Valorant,Parchis,Brawl start','2000-09-30','ivan'),(4,'2022-06-13 13:48:35','darness','','League of Legends,Valorant,Parchis,Brawl start','2000-01-15','adri'),(5,'2022-06-13 13:54:08','Srpatata','','League of Legends,Valorant,Parchis,Brawl start','1996-01-8','angie'),(6,'2022-06-13 13:58:33','patata','','League of Legends,Valorant,Parchis,Brawl start','1998-06-12','tono');
 /*!40000 ALTER TABLE `jugadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-09  8:17:47
+-- Dump completed on 2022-06-13 16:23:03
