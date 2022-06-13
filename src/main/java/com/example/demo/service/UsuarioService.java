@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
+import com.example.demo.entity.Participacion;
 import com.example.demo.entity.Usuarios;
 
 public interface UsuarioService {
@@ -14,6 +15,10 @@ public interface UsuarioService {
 	
 	public Usuarios subUser(Integer tarjetaCredito,long idUsuario);
 	
+	public Usuarios pagoMercha(Integer tarjetaCredito,long idUsuario,Double precio);
+	
 	public Usuarios unsubUser(long idUsuario);
+	
+	public Participacion unirseEvento(long idUsuario,Long idEvento);
 	
 }

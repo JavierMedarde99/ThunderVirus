@@ -24,9 +24,11 @@ import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.model.CustomUserDetails;
+import com.example.demo.repository.RepositoryComentarios;
 import com.example.demo.repository.RepositoryEvento;
 import com.example.demo.repository.RepositoryJugadores;
 import com.example.demo.repository.RepositoryMerchandising;
+import com.example.demo.repository.RepositoryParticipacion;
 import com.example.demo.repository.RepositoryUsuario;
 import com.example.demo.service.UsuarioService;
 
@@ -50,7 +52,13 @@ public class RegistroUsuarioController {
 	private RepositoryEvento reposiEvento;
 
 	@Autowired
+	private RepositoryParticipacion reposiParticipacion;
+	
+	@Autowired
 	private RepositoryMerchandising repositorymerchandising;
+	
+	@Autowired
+	private RepositoryComentarios Repositorycomentarios;
 	
 	@GetMapping("/login")
 	public String mostrarLogin() {
@@ -69,7 +77,6 @@ public class RegistroUsuarioController {
 				model.addAttribute("NoSub", true);
 			}
 		}
-		log.info("entra");
 		return "main";
 	}
 
@@ -78,22 +85,50 @@ public class RegistroUsuarioController {
 		return "pasarela";
 	}
 	
+	@PostMapping("/pasarelaMercha")
+	public String mostrarPasarelaMercha(Model model,@RequestParam(name="precio") Double pago) {
+		model.addAttribute("dinero", pago);
+		log.info("pago: {}",pago);
+		return "pasarelaMercha";
+	}
+	
 	@GetMapping("/registroland")
 	public String mostrarRegistro() {
 		return "registro";
 	}
 
 	@GetMapping("/javi")
-	public String mostrarJavi(Model model) {
+	public String mostrarJavi(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
+		
 		model.addAttribute("jugadorJavi",reposiJugadores.dataJugadores("javi"));
 		String juegos = reposiJugadores.dataJuegos("javi");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosJavi",juego);
+		
+		model.addAttribute("comentarios",Repositorycomentarios.javiComent());
 		return "javi";
 	}
 	
 	@GetMapping("/antonio")
-	public String mostrarAntonio(Model model) {
+	public String mostrarAntonio(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
 		model.addAttribute("jugadorAntonio",reposiJugadores.dataJugadores("antonio"));
 		String juegos = reposiJugadores.dataJuegos("antonio");
 		String[] juego = juegos.split(",");
@@ -102,7 +137,16 @@ public class RegistroUsuarioController {
 	}
 	
 	@GetMapping("/ivan")
-	public String mostrarIvan(Model model) {
+	public String mostrarIvan(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
 		model.addAttribute("jugadorIvan",reposiJugadores.dataJugadores("ivan"));
 		String juegos = reposiJugadores.dataJuegos("ivan");
 		String[] juego = juegos.split(",");
@@ -111,7 +155,16 @@ public class RegistroUsuarioController {
 	}
 	
 	@GetMapping("/adri")
-	public String mostrarAdri(Model model) {
+	public String mostrarAdri(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
 		model.addAttribute("jugadorAdri",reposiJugadores.dataJugadores("adri"));
 		String juegos = reposiJugadores.dataJuegos("adri");
 		String[] juego = juegos.split(",");
@@ -120,7 +173,16 @@ public class RegistroUsuarioController {
 	}
 	
 	@GetMapping("/angie")
-	public String mostrarAngie(Model model) {
+	public String mostrarAngie(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
 		model.addAttribute("jugadorAngie",reposiJugadores.dataJugadores("angie"));
 		String juegos = reposiJugadores.dataJuegos("angie");
 		String[] juego = juegos.split(",");
@@ -129,7 +191,16 @@ public class RegistroUsuarioController {
 	}
 	
 	@GetMapping("/tono")
-	public String mostrarToño(Model model) {
+	public String mostrarToño(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
 		model.addAttribute("jugadorTono",reposiJugadores.dataJugadores("tono"));
 		String juegos = reposiJugadores.dataJuegos("tono");
 		String[] juego = juegos.split(",");
@@ -153,14 +224,38 @@ public class RegistroUsuarioController {
 	}
 
 	@GetMapping("/evento")
-	public String mostrarEvento(Model model) {
+	public String mostrarEvento(@AuthenticationPrincipal CustomUserDetails userDetails,Model model,@RequestParam(value = "idevento", required = false) Long idEvento) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			
+		
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				return "redirect:/";
+			}
+		}
+		
+		
+		
 		model.addAttribute("evento",reposiEvento.findAll());
 		return "evento";
 	}
 
 	@GetMapping("/Merchandising")
-	public String mostrarMerchandising(Model model) {
-		model.addAttribute("merchandising", repositorymerchandising.findAll());
+	public String mostrarMerchandising(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
+		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
+			Usuarios usu = reposiUsuario.checkUsuario(userDetails.getUsername()).get();
+			
+			if(usu.isSub()) {
+				model.addAttribute("EsSub", true);
+			}else {
+				model.addAttribute("NoSub", true);
+			}
+		}
+		model.addAttribute("tazas", repositorymerchandising.tazas());
+		model.addAttribute("camisetas", repositorymerchandising.camisetas());
 		return "Merchandising";
 	}
 	
@@ -244,6 +339,15 @@ public class RegistroUsuarioController {
 		return "redirect:/";
 	}
 	
+	@PostMapping("/pagoMercha")
+	public String pagoMercha(@RequestParam("tarjetaCredito") int tarjetaCredito,@RequestParam("idusuario") long idUsuario,@RequestParam("precio") Double dinero) {
+		log.info("dinero: {}", dinero);
+		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
+		 usuarioService.pagoMercha(tarjetaCreditoInt, idUsuario,dinero);
+		
+		return "redirect:/Merchandising";
+	}
+	
 	@PostMapping("/unsub")
 	public String unsubUser(@RequestParam("idusuario") long idUsuario) {
 		
@@ -260,6 +364,17 @@ public class RegistroUsuarioController {
 		reposiUsuario.deleteById(idUsuario);
 		
 		return "login";
+	}
+	
+	@PostMapping("/unirseEvento")
+	public String unirseAlEvento(@RequestParam("idusuario") long idUsuario,@RequestParam("idevento") Long idEvento) {
+		
+		if(reposiParticipacion.checkEvent(idUsuario, idEvento).isEmpty()) {
+			usuarioService.unirseEvento(idUsuario, idEvento);
+		}
+		
+		
+		return "redirect:/evento";
 	}
 	
 }

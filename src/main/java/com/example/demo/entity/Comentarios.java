@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,18 +14,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name="merchandising")
+@Table(name="comentarios")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Merchandising {
+public class Comentarios {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String nombre;
-	private Double precio;
-	private Integer cantidad;
-	private String foto;
-	
+	private Long id_usu;
+	private Long id_jugador;
+	private String comentario;
+	private Timestamp fecha_coment;
 }

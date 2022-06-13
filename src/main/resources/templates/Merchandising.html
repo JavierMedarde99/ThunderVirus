@@ -55,9 +55,27 @@
 			</div>
 		</nav>
 	</header>
-	<main>
-		<div id="contenido" th:each="productos : ${merchandising}">
-		<p th:text="${productos.nombre}"></p>
+	<main><h2>Camisetas</h2>
+		<div id="contenido" th:each="camisetas : ${camisetas}">
+		
+		<img th:src="${camisetas.foto}" alt="camisa" >
+		<h3 th:text="${camisetas.nombre}"></h3>
+			<h4 th:text="'Precio:'+${camisetas.precio}"></h4>
+			<form th:action="@{/pasarelaMercha}" method="post">
+			<input type="hidden" name="precio" th:value="${camisetas.precio}">
+			<button class="btn">Comprar</button>
+			</form>
+		</div>
+		<h2>Tazas</h2>
+		<div id="contenido" th:each="tazas : ${tazas}">
+		
+		<img th:src="${tazas.foto}" alt="camisa" >
+		<h3 th:text="${tazas.nombre}"></h3>
+			<h4 th:text="'Precio:'+${tazas.precio}"></h4>
+			<form th:action="@{/pasarelaMercha}" method="post">
+			<input type="hidden" name="precio" th:value="${tazas.precio}">
+			<button class="btn">Comprar</button>
+			</form>
 		</div>
 	</main>
 	<footer>

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
+import com.example.demo.entity.Participacion;
 import com.example.demo.entity.Usuarios;
+import com.example.demo.repository.RepositoryParticipacion;
 import com.example.demo.repository.RepositoryUsuario;
 
 @Service
@@ -22,7 +24,8 @@ public class UsuarioServicioImpl implements UsuarioService{
 	@Autowired
 	private RepositoryUsuario usuarioRepository;
 	
-	
+	@Autowired
+	private RepositoryParticipacion Repositoryparticipacion;
 	
 	@Override
 	public Usuarios saveUser(UsuarioRegistroDTO registroDTO) {
@@ -73,7 +76,12 @@ public class UsuarioServicioImpl implements UsuarioService{
 	public Usuarios subUser(Integer tarjetaCredito,long idUsuario) {
 		 Usuarios subUser =  usuarioRepository.checkId(idUsuario).get();
 		 Timestamp ts = Timestamp.from(Instant.now());
-		 subUser.setDinero(tarifa);
+		 if(subUser.getDinero()!=0) {
+			 subUser.setDinero(subUser.getDinero()+tarifa);
+		 }else {
+			 subUser.setDinero(tarifa);
+		 }
+		 
 		 subUser.setSub(true);
 		 subUser.setTarifa(tarifa);
 		 subUser.setTarjetaCredito(tarjetaCredito);
@@ -93,6 +101,33 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 subUser.setTarjetaCredito(0);
 		 subUser.setFecha_fin_sub(ts);
 		 
+		 return usuarioRepository.save(subUser);
+	}
+	
+	@Override
+	public Participacion unirseEvento(long idUsuario,Long idEvento) {
+		Timestamp ts = Timestamp.from(Instant.now());
+		Participacion part = new Participacion();
+		part.setId_evento(idEvento);
+		part.setId_usu(idUsuario);
+		part.setFecha_part(ts);
+		if(part.getNum_part()!=1) {
+			part.setNum_part(part.getNum_part()+1);
+		}
+		part.setNum_part(1);
+		
+		return Repositoryparticipacion.save(part);
+	}
+	
+	@Override
+	public Usuarios pagoMercha(Integer tarjetaCredito,long idUsuario,Double precio) {
+		 Usuarios subUser =  usuarioRepository.checkId(idUsuario).get();
+		 if(subUser.getDinero()!=0) {
+			 subUser.setDinero(subUser.getDinero()+precio);
+		 }else {
+			 subUser.setDinero(precio);
+		 }
+		 subUser.setTarjetaCredito(tarjetaCredito);
 		 return usuarioRepository.save(subUser);
 	}
 }

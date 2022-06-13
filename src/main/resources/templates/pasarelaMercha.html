@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" lang="es">
+<title>registro</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+
+<LINK REL=StyleSheet HREF=css/Login.css TYPE="text/css" MEDIA=screen>
+</head>
+<body>
+	<div id="mainRegistro">
+		<div id="videoThunder"></div>
+		<div id="registro">
+			<div id="cabecera">
+				<img src="images/thunder_virus_logo.png" class="img-fluid"
+					alt="Logo">
+			</div>
+			<div id="cuerpo">
+				<form class="row g-3 needs-validation"
+				th:action="@{/pagoMercha}" method="post" th:object="${usuariodto}">
+					
+						<div class="mb-2 p-1">
+							<label for="tarjetaCredito" class="form-label">Tarjeta de crédito </label> <input
+								type="number" class="form-control" id="tarjetaCredito" name="tarjetaCredito" min-length=16 max-length=16 required>
+						</div>
+						<div class="mb-2 p-1">
+							<label for="nombre" class="form-label">Fecha de caducidad</label> <input
+								type="number" class="form-control" id="mes" name="mes" min="1" max="12" required>
+								<input type="number" class="form-control" id="mes" name="mes" min="1"  required>
+						</div>
+						<div class="mb-3 p-1">
+							<label for="email" class="form-label">CSV </label> <input
+								type="number" class="form-control" id="csv" name="csv" required>
+						</div>
+						<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
+						<input type="hidden" name="precio" th:value="${dinero}">
+						
+						<div class="mb-3 ">
+							<button class="btn" type="submit">Pagar</button>
+						</div>
+					
+				</form>
+				
+				<div id="piePagina">
+				
+				</div>
+
+			<div id="footer">
+				<div id="socialMedia">
+				<img src="images/instagram.png" alt ="instagram">
+				<img src="images/youtube.png" alt ="youtube">
+				<img id ="twitch" src="images/twitch.png" alt ="twitch">
+				<img src="images/twitter.png" alt ="twitter">
+				<img src="images/tiktok.png" alt ="tiktok">
+				</div>
+				<div id="privacidad">
+				<p>Aviso legal</p>
+				<p>Política de cookies</p>
+				<p>Política de privacidad</p>
+				</div>
+			</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+</body>
+</html>
