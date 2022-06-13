@@ -44,7 +44,7 @@
 								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link active"
 							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
@@ -57,34 +57,34 @@
 	</header>
 	<main>
 	<div id="jugador">
-	<div id="fotoJugador"><img th:src="${jugadorJavi.foto}" alt="fotoJavi"></div>
-	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorJavi.nombre}"></p>
-	<p th:text="'Nombre Jugador: '+${jugadorJavi.nombre_jugador}"></p>
-	<p th:text="'Fecha de nacimiento: '+${jugadorJavi.fecha_nac}"></p>
-	<p th:text="'Fecha de nacimiento: '+${jugadorJavi.juegos}"></p></div>
+	<div id="fotoJugador"><img th:src="${jugadorTono.foto}" alt="fotoTono"></div>
+	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorTono.nombre}"></p>
+	<p th:text="'Nombre Jugador: '+${jugadorTono.nombre_jugador}"></p>
+	<p th:text="'Fecha de nacimiento: '+${jugadorTono.fecha_nac}"></p>
+	<p th:text="'Fecha de nacimiento: '+${jugadorTono.juegos}"></p></div>
 	</div>
 	<div id="lol">
-	<img src="" alt="fotoJavilol" >
-	<h2 th:text="${juegosJavi[0]}"></h2>
+	<img src="" alt="fotoAdrilol" >
+	<h2 th:text="${juegosTono[0]}"></h2>
 	<p></p>
 	</div>
 	
 	<div id="valorant">
 	
-	<h2 th:text="${juegosJavi[1]}"></h2>
-	<img src="" alt="fotoJavivalorant" >
+	<h2 th:text="${juegosTono[1]}"></h2>
+	<img src="" alt="fotoToñovalorant" >
 	<p></p>
 	</div>
 	<div id="lol">
 
-	<h2 th:text="${juegosJavi[2]}"></h2>
-		<img src="" alt="fotoJaviparchis" >
+	<h2 th:text="${juegosTono[2]}"></h2>
+		<img src="" alt="fotoToñoparchis" >
 	<p></p>
 	</div>
 	<div id="lol">
 	
-	<h2 th:text="${juegosJavi[3]}"></h2>
-	<img src="" alt="fotoJavibraw" >
+	<h2 th:text="${juegosTono[3]}"></h2>
+	<img src="" alt="fotoToñobraw" >
 	<p></p>
 	</div>
 	

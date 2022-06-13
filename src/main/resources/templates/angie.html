@@ -13,35 +13,103 @@
 </head>
 <body>
 	<header>
-	<!-- Logog -->
-		<div id="cabecera"><a th:href="@{/}"><img src="images/thunder_virus_logo.png"
-			class="img-fluid" alt="Logo"></a></div>
-			<!-- menu de la pagina -->
-		<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav m-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{/perfil}"><img id="avatar" src="images/avatar.png" alt="avatar"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" th:href="@{/}"><p>Inicio</p></a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link disabled" th:href="@{/evento}"><p>Evento</p></a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link active" th:href="@{/Merchandising}"><p>Merchandising</p></a>
-        </li>
-         <li class="nav-item dropdown">
-            <a class="nav-link active" href="#"><p>jugadores</p></a>
-        </li>
-      </ul>
+		<!-- Logog -->
+		<div id="cabecera">
+			<a th:href="@{/}"><img  src="images/thunder_virus_logo.png"
+				class="img-fluid logo" alt="Logo"></a>
+		</div>
+		<!-- menu de la pagina -->
+		<nav class="navbar navbar-expand bg-light">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav m-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/perfil}"><img id="avatar"
+								th:src="'/images/perfile/'+${#request.userPrincipal.principal.file}" alt="avatar"></a></li>
+						<li class="nav-item"><a class="nav-link active"
+							th:href="@{/}"><p>Inicio</p></a></li>
+						<li class="nav-item"><a th:if="${NoSub}" class="nav-link disabled"
+							th:href="@{/evento}"><p>Evento</p></a><a th:if="${EsSub}" class="nav-link active"
+							th:href="@{/evento}"><p>Evento</p></a></li>
+						<li class="nav-item dropdown" id="jugadores"><a
+							class="nav-link dropdown-toggle d-flex" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+								<p class="mr-1">Jugadores</p>
+						</a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/javi}"><p>Javi</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link active"
+							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
 
-    </div>
-  </div>
-</nav>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
 	</header>
-	<main></main>
+	<main>
+	<div id="jugador">
+	<div id="fotoJugador"><img th:src="${jugadorAngie.foto}" alt="fotoAngie"></div>
+	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorAngie.nombre}"></p>
+	<p th:text="'Nombre Jugador: '+${jugadorAngie.nombre_jugador}"></p>
+	<p th:text="'Fecha de nacimiento: '+${jugadorAngie.fecha_nac}"></p>
+	<p th:text="'Fecha de nacimiento: '+${jugadorAngie.juegos}"></p></div>
+	</div>
+	<div id="lol">
+	<img src="" alt="fotoAdrilol" >
+	<h2 th:text="${juegosAngie[0]}"></h2>
+	<p></p>
+	</div>
+	
+	<div id="valorant">
+	
+	<h2 th:text="${juegosAngie[1]}"></h2>
+	<img src="" alt="fotoAngievalorant" >
+	<p></p>
+	</div>
+	<div id="lol">
+
+	<h2 th:text="${juegosAngie[2]}"></h2>
+		<img src="" alt="fotoAngieparchis" >
+	<p></p>
+	</div>
+	<div id="lol">
+	
+	<h2 th:text="${juegosAngie[3]}"></h2>
+	<img src="" alt="fotoAngiebraw" >
+	<p></p>
+	</div>
+	
+	<button class="btn">comentarios</button>
+	</main>
+	
+	<!-- Pie de pagina -->
+	<footer>
+		<div id="socialMedia">
+			<img class="icon" src="images/instagram.png" alt="instagram"> 
+			<img class="icon" src="images/youtube.png" alt="youtube"> 
+			<img class="icon" src="images/twitch.png" alt="twitch"> 
+			<img class="icon" src="images/twitter.png" alt="twitter"> 
+			<img class="icon" src="images/tiktok.png" alt="tiktok">
+		</div>
+		<div id="logoFooter">
+		<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
+				<p>copyright © todos los derechos reservados 2022</p>
+		</div>
+		<div id="politica">
+		<p>Aviso legal</p>
+		<p>Política de cookies</p>
+		<p>Política de privacidad</p>
+		</div>
+	</footer>
+	<!-- fin del pie de pagina -->
 </body>
 </html>

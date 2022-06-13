@@ -24,6 +24,8 @@ import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.model.CustomUserDetails;
+import com.example.demo.repository.RepositoryEvento;
+import com.example.demo.repository.RepositoryJugadores;
 import com.example.demo.repository.RepositoryUsuario;
 import com.example.demo.service.UsuarioService;
 
@@ -37,6 +39,12 @@ public class RegistroUsuarioController {
 
 	@Autowired
 	private RepositoryUsuario reposiUsuario;
+	
+	@Autowired
+	private RepositoryJugadores reposiJugadores;
+	
+	@Autowired
+	private RepositoryEvento reposiEvento;
 
 	@GetMapping("/login")
 	public String mostrarLogin() {
@@ -68,6 +76,60 @@ public class RegistroUsuarioController {
 		return "registro";
 	}
 
+	@GetMapping("/javi")
+	public String mostrarJavi(Model model) {
+		model.addAttribute("jugadorJavi",reposiJugadores.dataJugadores("javi"));
+		String juegos = reposiJugadores.dataJuegos("javi");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosJavi",juego);
+		return "javi";
+	}
+	
+	@GetMapping("/antonio")
+	public String mostrarAntonio(Model model) {
+		model.addAttribute("jugadorAntonio",reposiJugadores.dataJugadores("antonio"));
+		String juegos = reposiJugadores.dataJuegos("antonio");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosAntonio",juego);
+		return "antonio";
+	}
+	
+	@GetMapping("/ivan")
+	public String mostrarIvan(Model model) {
+		model.addAttribute("jugadorIvan",reposiJugadores.dataJugadores("ivan"));
+		String juegos = reposiJugadores.dataJuegos("ivan");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosIvan",juego);
+		return "ivan";
+	}
+	
+	@GetMapping("/adri")
+	public String mostrarAdri(Model model) {
+		model.addAttribute("jugadorAdri",reposiJugadores.dataJugadores("adri"));
+		String juegos = reposiJugadores.dataJuegos("adri");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosAdri",juego);
+		return "adri";
+	}
+	
+	@GetMapping("/angie")
+	public String mostrarAngie(Model model) {
+		model.addAttribute("jugadorAngie",reposiJugadores.dataJugadores("angie"));
+		String juegos = reposiJugadores.dataJuegos("angie");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosAngie",juego);
+		return "angie";
+	}
+	
+	@GetMapping("/tono")
+	public String mostrarToño(Model model) {
+		model.addAttribute("jugadorTono",reposiJugadores.dataJugadores("tono"));
+		String juegos = reposiJugadores.dataJuegos("tono");
+		String[] juego = juegos.split(",");
+		model.addAttribute("juegosTono",juego);
+		return "tono";
+	}
+	
 	@GetMapping("/perfil")
 	public String mostrarPerfil(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
 		if(reposiUsuario.checkUsuario(userDetails.getUsername()).isPresent()) {
@@ -83,7 +145,8 @@ public class RegistroUsuarioController {
 	}
 
 	@GetMapping("/evento")
-	public String mostrarEvento() {
+	public String mostrarEvento(Model model) {
+		model.addAttribute("evento",reposiEvento.findAll());
 		return "evento";
 	}
 
