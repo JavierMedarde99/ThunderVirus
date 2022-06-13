@@ -159,7 +159,8 @@ public class RegistroUsuarioController {
 	}
 
 	@GetMapping("/Merchandising")
-	public String mostrarMerchandising() {
+	public String mostrarMerchandising(Model model) {
+		model.addAttribute("merchandising", repositorymerchandising.findAll());
 		return "Merchandising";
 	}
 	
