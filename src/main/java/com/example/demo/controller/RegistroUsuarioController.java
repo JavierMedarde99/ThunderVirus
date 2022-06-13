@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.dto.ComentHTML;
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
+import com.example.demo.entity.Comentarios;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.model.CustomUserDetails;
 import com.example.demo.repository.RepositoryComentarios;
@@ -114,7 +118,17 @@ public class RegistroUsuarioController {
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosJavi",juego);
 		
-		model.addAttribute("comentarios",Repositorycomentarios.javiComent());
+		List<Comentarios> listaJaviComent = Repositorycomentarios.javiComent();
+		List<ComentHTML> listaHTMLComent= new ArrayList();
+		for(Comentarios lista : listaJaviComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent);
 		return "javi";
 	}
 	
@@ -375,6 +389,15 @@ public class RegistroUsuarioController {
 		
 		
 		return "redirect:/evento";
+	}
+	
+	@PostMapping("/anadirComentarioJavi")
+	public String anadirComentario(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/javi";
 	}
 	
 }

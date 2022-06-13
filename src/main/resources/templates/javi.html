@@ -104,10 +104,12 @@
       <div class="modal-body" th:each="comentarios : ${comentarios}">
    		
         <p th:text="${comentarios.comentario}"></p>
+                <p th:text="${comentarios.nombre}"></p>
+                <p th:text="${comentarios.fecha}"></p>
       </div>
       <div class="modal-footer">
-      <form th:action="@{/anadirComentario}" method="post">
-      <textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea"></textarea>
+      <form th:action="@{/anadirComentarioJavi}" method="post">
+      <textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea" name="comentario"></textarea>
       <input type="hidden" clas="btn" name="id_jugador" th:value="${jugadorJavi.id}">
       <input type="hidden" clas="btn" name="id_usu" th:value="${#request.userPrincipal.principal.idUsuario}">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

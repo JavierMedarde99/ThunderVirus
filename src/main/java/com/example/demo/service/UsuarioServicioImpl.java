@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
+import com.example.demo.entity.Comentarios;
 import com.example.demo.entity.Participacion;
 import com.example.demo.entity.Usuarios;
+import com.example.demo.repository.RepositoryComentarios;
 import com.example.demo.repository.RepositoryParticipacion;
 import com.example.demo.repository.RepositoryUsuario;
 
@@ -26,6 +28,9 @@ public class UsuarioServicioImpl implements UsuarioService{
 	
 	@Autowired
 	private RepositoryParticipacion Repositoryparticipacion;
+	
+	@Autowired
+	private RepositoryComentarios Repositorycomentarios;
 	
 	@Override
 	public Usuarios saveUser(UsuarioRegistroDTO registroDTO) {
@@ -129,5 +134,16 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 }
 		 subUser.setTarjetaCredito(tarjetaCredito);
 		 return usuarioRepository.save(subUser);
+	}
+	
+	@Override
+	public Comentarios anadirComen(long idUsuario,Long idJugador,String comentario) {
+		Comentarios coment = new Comentarios();
+		Timestamp ts = Timestamp.from(Instant.now());
+		coment.setId_jugador(idJugador);
+		coment.setId_usu(idUsuario);
+		coment.setComentario(comentario);
+		coment.setFecha_coment(ts);
+		return Repositorycomentarios.save(coment);
 	}
 }
