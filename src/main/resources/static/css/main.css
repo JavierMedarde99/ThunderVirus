@@ -213,6 +213,81 @@ div#perfilCompleto{
 	flex-flow: row wrap;
 }
 
-form#logout{
-	width: 50%;;
+div#butonesSUper{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
 }
+
+
+form#cambImagen{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+
+button.btn{
+	background-color:#A304F3;
+	color:white;
+	margin: 1rem
+}
+
+button#btnCambio{
+	width: 100%;
+	padding: 0;
+}
+
+h1{
+	text-align: center;
+}
+
+div#eventos{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+}
+
+div.evento{
+	display: flex;
+	flex-flow: column nowrap;
+	margin: 5rem;
+}
+
+div#camisetasMecha{
+	display: flex;
+	flex-flow: row wrap;
+	width: 45%;
+}
+
+div#totalMercha{
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+div#tazasMecha{
+	display: flex;
+	flex-flow: row wrap;
+	width: 50%;
+}
+
+h2#h2Camisa{
+	width: 100%;
+}
+
+h2#h2Camisa{
+	width: 100%;
+}
+
+h2#h2Taza{
+	width: 100%;
+}
+
+div.contenido{
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-between; 
+}
+

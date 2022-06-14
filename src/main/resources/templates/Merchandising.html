@@ -43,8 +43,8 @@
 								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link active"
 							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
@@ -55,8 +55,12 @@
 			</div>
 		</nav>
 	</header>
-	<main><h2>Camisetas</h2>
-		<div id="contenido" th:each="camisetas : ${camisetas}">
+	<main>
+	<h1>Zona de compra</h1>
+	<div id="totalMercha">
+	<div id="camisetasMecha">
+	<h2 id="h2Camisa">Camisetas</h2>
+		<div class="contenido" th:each="camisetas : ${camisetas}">
 		
 		<img th:src="${camisetas.foto}" alt="camisa" >
 		<h3 th:text="${camisetas.nombre}"></h3>
@@ -66,8 +70,10 @@
 			<button class="btn">Comprar</button>
 			</form>
 		</div>
-		<h2>Tazas</h2>
-		<div id="contenido" th:each="tazas : ${tazas}">
+		</div>
+		<div id="tazasMecha">
+		<h2 id="h2Taza">Tazas</h2>
+		<div class="contenido" th:each="tazas : ${tazas}">
 		
 		<img th:src="${tazas.foto}" alt="camisa" >
 		<h3 th:text="${tazas.nombre}"></h3>
@@ -76,6 +82,8 @@
 			<input type="hidden" name="precio" th:value="${tazas.precio}">
 			<button class="btn">Comprar</button>
 			</form>
+		</div>
+		</div>
 		</div>
 	</main>
 	<footer>

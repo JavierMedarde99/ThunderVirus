@@ -143,10 +143,25 @@ public class RegistroUsuarioController {
 				model.addAttribute("NoSub", true);
 			}
 		}
+		
 		model.addAttribute("jugadorAntonio",reposiJugadores.dataJugadores("antonio"));
 		String juegos = reposiJugadores.dataJuegos("antonio");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosAntonio",juego);
+		
+		List<Comentarios> listaAntonioComent = Repositorycomentarios.antonioComent();
+			List<ComentHTML> listaHTMLComent2= new ArrayList();
+		for(Comentarios lista : listaAntonioComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent2.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent2);
+		
+		
 		return "antonio";
 	}
 	
@@ -165,6 +180,19 @@ public class RegistroUsuarioController {
 		String juegos = reposiJugadores.dataJuegos("ivan");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosIvan",juego);
+		
+		List<Comentarios> listaIvanComent = Repositorycomentarios.ivanComent();
+		List<ComentHTML> listaHTMLComent3= new ArrayList();
+		for(Comentarios lista : listaIvanComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent3.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent3);
+		
 		return "ivan";
 	}
 	
@@ -183,6 +211,19 @@ public class RegistroUsuarioController {
 		String juegos = reposiJugadores.dataJuegos("adri");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosAdri",juego);
+		
+		List<Comentarios> listaIvanComent = Repositorycomentarios.adrianComent();
+		List<ComentHTML> listaHTMLComent4= new ArrayList();
+		for(Comentarios lista : listaIvanComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent4.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent4);
+		
 		return "adri";
 	}
 	
@@ -201,6 +242,19 @@ public class RegistroUsuarioController {
 		String juegos = reposiJugadores.dataJuegos("angie");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosAngie",juego);
+		
+		List<Comentarios> listaIvanComent = Repositorycomentarios.angieComent();
+		List<ComentHTML> listaHTMLComent5= new ArrayList();
+		for(Comentarios lista : listaIvanComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent5.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent5);
+		
 		return "angie";
 	}
 	
@@ -219,6 +273,19 @@ public class RegistroUsuarioController {
 		String juegos = reposiJugadores.dataJuegos("tono");
 		String[] juego = juegos.split(",");
 		model.addAttribute("juegosTono",juego);
+		
+		List<Comentarios> listaIvanComent = Repositorycomentarios.tonoComent();
+		List<ComentHTML> listaHTMLComent5= new ArrayList();
+		for(Comentarios lista : listaIvanComent) {
+			ComentHTML coment = new ComentHTML();
+			coment.setFecha(lista.getFecha_coment().toString());
+			coment.setComentario(lista.getComentario());
+			coment.setNombre(reposiUsuario.checkId(lista.getId_usu()).get().getUsername());
+			listaHTMLComent5.add(coment);
+		}
+				
+		model.addAttribute("comentarios",listaHTMLComent5);
+		
 		return "tono";
 	}
 	
@@ -392,12 +459,57 @@ public class RegistroUsuarioController {
 	}
 	
 	@PostMapping("/anadirComentarioJavi")
-	public String anadirComentario(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+	public String anadirComentarioJav(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
 		
 		usuarioService.anadirComen(idUsuario, idJugador, comentario);
 		
 		
 		return "redirect:/javi";
+	}
+	
+	@PostMapping("/anadirComentarioAntonio")
+	public String anadirComentarioAnt(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/antonio";
+	}
+	
+	@PostMapping("/anadirComentarioIvan")
+	public String anadirComentarioIva(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/ivan";
+	}
+	
+	@PostMapping("/anadirComentarioAdri")
+	public String anadirComentarioAdri(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/adri";
+	}
+	
+	@PostMapping("/anadirComentarioAngie")
+	public String anadirComentarioAngi(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/angie";
+	}
+	
+	@PostMapping("/anadirComentarioTono")
+	public String anadirComentarioTono(@RequestParam("id_usu") long idUsuario,@RequestParam("id_jugador") Long idJugador,@RequestParam("comentario") String comentario) {
+		
+		usuarioService.anadirComen(idUsuario, idJugador, comentario);
+		
+		
+		return "redirect:/tono";
 	}
 	
 }

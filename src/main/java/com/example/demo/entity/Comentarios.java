@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Comentarios {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private long id;
 	
 	private Long id_usu;

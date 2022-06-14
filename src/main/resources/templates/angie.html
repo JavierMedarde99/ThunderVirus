@@ -43,8 +43,8 @@
 								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link active"
 							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
@@ -63,32 +63,68 @@
 	<p th:text="'Fecha de nacimiento: '+${jugadorAngie.fecha_nac}"></p>
 	<p th:text="'Fecha de nacimiento: '+${jugadorAngie.juegos}"></p></div>
 	</div>
+	<div id="carrera">
+	<h2>Carrera del jugador</h2>
+	<p>Javier el que inicio toda la empresa.Empeza hace unos años en el mundillo de los esport pero ha sido sorprendente el avance de este jugador en este mundillo y como es capaz de hacer lo imposible en cuanto hay peligro en la partida</p>
+	</div>
 	<div id="lol">
 	<img src="" alt="fotoAdrilol" >
 	<h2 th:text="${juegosAngie[0]}"></h2>
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	
 	<div id="valorant">
 	
 	<h2 th:text="${juegosAngie[1]}"></h2>
 	<img src="" alt="fotoAngievalorant" >
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<div id="lol">
 
 	<h2 th:text="${juegosAngie[2]}"></h2>
 		<img src="" alt="fotoAngieparchis" >
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<div id="lol">
 	
 	<h2 th:text="${juegosAngie[3]}"></h2>
 	<img src="" alt="fotoAngiebraw" >
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	
-	<button class="btn">comentarios</button>
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Ver comentarios
+</button>
+	
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Comentarios</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" th:each="comentarios : ${comentarios}">
+   		
+        <p th:text="${comentarios.comentario}"></p>
+                <p th:text="${comentarios.nombre}"></p>
+                <p th:text="${comentarios.fecha}"></p>
+      </div>
+      <div class="modal-footer">
+      <form th:action="@{/anadirComentarioAngie}" method="post">
+      <textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea" name="comentario"></textarea>
+      <input type="hidden" clas="btn" name="id_jugador" th:value="${jugadorAngie.id}">
+      <input type="hidden" clas="btn" name="id_usu" th:value="${#request.userPrincipal.principal.idUsuario}">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+     <button type="submit" class="btn" >añadir comentario</button>
+      
+        
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fin Modal -->
 	</main>
 	
 	<!-- Pie de pagina -->

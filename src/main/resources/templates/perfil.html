@@ -43,8 +43,8 @@
 								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link active"
 							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
@@ -96,10 +96,11 @@
 			</form>
 			<p th:if="${ErrorUsuarioNombre}" class="error">Invalid username</p>
 			<p th:if="${ErrorUsuarioPassworld}" class="error">Passworld incorrect</p>
+			<div id="butonesSUper">
 			<form th:action="@{/logout}" method="post" id="logout">
 				<button class="btn">cerrar sesión</button>
 			</form>
-			<form th:if="${NoSub}"th:action="@{/pasarela}" method="post">
+			<form th:if="${NoSub}"th:action="@{/pasarela}" method="post" id="desub">
 			<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
 				<button class="btn">subscribirse</button>
 			</form>
@@ -113,6 +114,10 @@
 			<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
 				<button class="btn">eliminar cuenta</button>
 			</form>
+			<form th:action="@{/delUser}" method="post">
+			<button class="btn disabled">Proximamente</button>
+			</form>
+			</div>
 		</div>
 
 	</main>

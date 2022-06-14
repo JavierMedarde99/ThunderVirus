@@ -43,8 +43,8 @@
 								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
 								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adrian}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/toño}"><p>Toño</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link active"
 							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
@@ -57,11 +57,12 @@
 	</header>
 	<main>
 	
+	<h1>Eventos</h1>
+	<div id="eventos"  >
 	
-	<div id="eventos"  th:each="eventos : ${evento}">
 	
+	<div class="evento" th:each="eventos : ${evento}">
 	<h2 th:text="${eventos.nombre}"></h2>
-	<div class="evento">
 	<div id="eventoFoto"><img th:src="${eventos.foto_evento}" alt="fotoEvento"></div>
 	<div id ="infoEvento">
 	
@@ -75,9 +76,9 @@
 	</form>
 	
 	</div>
-	</div>
-	</div>
 
+	</div>
+	</div>
 	</main>
 	<!-- Pie de pagina -->
 	<footer>

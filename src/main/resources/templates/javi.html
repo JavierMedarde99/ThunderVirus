@@ -63,29 +63,33 @@
 	<p th:text="'Fecha de nacimiento: '+${jugadorJavi.fecha_nac}"></p>
 	<p th:text="'Fecha de nacimiento: '+${jugadorJavi.juegos}"></p></div>
 	</div>
+	<div id="carrera">
+	<h2>Carrera del jugador</h2>
+	<p>Javier el que inicio toda la empresa.Empeza hace unos años en el mundillo de los esport pero ha sido sorprendente el avance de este jugador en este mundillo y como es capaz de hacer lo imposible en cuanto hay peligro en la partida</p>
+	</div>
 	<div id="lol">
 	<img src="" alt="fotoJavilol" >
 	<h2 th:text="${juegosJavi[0]}"></h2>
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	
 	<div id="valorant">
 	
 	<h2 th:text="${juegosJavi[1]}"></h2>
 	<img src="" alt="fotoJavivalorant" >
-	<p></p>
+	<p>Como main de rice es el tirador que mas se lanza a la lucha de la captura</p>
 	</div>
 	<div id="lol">
 
 	<h2 th:text="${juegosJavi[2]}"></h2>
 		<img src="" alt="fotoJaviparchis" >
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<div id="lol">
 	
 	<h2 th:text="${juegosJavi[3]}"></h2>
 	<img src="" alt="fotoJavibraw" >
-	<p></p>
+	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	
 	<!-- Button trigger modal -->
@@ -108,7 +112,7 @@
                 <p th:text="${comentarios.fecha}"></p>
       </div>
       <div class="modal-footer">
-      <form th:action="@{/anadirComentarioJavi}" method="post">
+      <form th:action="@{/anadirComentarioAntonio}" method="post">
       <textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea" name="comentario"></textarea>
       <input type="hidden" clas="btn" name="id_jugador" th:value="${jugadorJavi.id}">
       <input type="hidden" clas="btn" name="id_usu" th:value="${#request.userPrincipal.principal.idUsuario}">
@@ -121,6 +125,7 @@
     </div>
   </div>
 </div>
+<!-- fin Modal -->
 	</main>
 	
 	<!-- Pie de pagina -->
