@@ -60,6 +60,7 @@
 	<div id="totalMercha">
 	<div id="camisetasMecha">
 	<h2 id="h2Camisa">Camisetas</h2>
+	<div class="contenidos">
 		<div class="contenido" th:each="camisetas : ${camisetas}">
 		
 		<img th:src="${camisetas.foto}" alt="camisa" >
@@ -71,8 +72,10 @@
 			</form>
 		</div>
 		</div>
+		</div>
 		<div id="tazasMecha">
 		<h2 id="h2Taza">Tazas</h2>
+		<div class="contenidos">
 		<div class="contenido" th:each="tazas : ${tazas}">
 		
 		<img th:src="${tazas.foto}" alt="camisa" >
@@ -84,6 +87,7 @@
 			</form>
 		</div>
 		</div>
+		</div> 
 		</div>
 	</main>
 	<footer>

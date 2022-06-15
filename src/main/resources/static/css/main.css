@@ -256,7 +256,7 @@ div.evento{
 div#camisetasMecha{
 	display: flex;
 	flex-flow: row wrap;
-	width: 45%;
+	width: 50%;
 }
 
 div#totalMercha{
@@ -288,6 +288,42 @@ h2#h2Taza{
 div.contenido{
 	display: flex;
 	flex-flow: column wrap;
-	justify-content: space-between; 
+	justify-content: space-around; 
 }
 
+div.contenidos{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around; 
+	width: 100%;
+}
+
+div#jugador{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+
+div#fotoJugador{
+	width: 33%;
+}
+
+
+
+div#carrera{
+	width: 63%;
+}
+
+div.juego{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+div.juego > img{
+	width: 33%;
+}
+
+div#comentario{
+	display: flex;
+	justify-content: center;
+}
