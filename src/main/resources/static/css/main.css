@@ -37,6 +37,11 @@ ul.navbar-nav{
 	width: 100%
 }
 
+button.btn:hover {
+	background-color: #8103c1;
+	color: white;
+}
+
 li > a.disabled > p{
 	color: grey;
 	font-weight: bolder;
