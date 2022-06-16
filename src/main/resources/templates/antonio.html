@@ -57,7 +57,7 @@
 	</header>
 	<main>
 	<div id="jugador">
-	<div id="fotoJugador"><img th:src="${jugadorAntonio.foto}" alt="fotoAntonio"></div>
+	<div id="fotoJugador"><img th:src="'/images/Jugadores/'+${jugadorAntonio.foto}" alt="fotoAntonio" id="imgJuga"></div>
 	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorAntonio.nombre}"></p>
 	<p th:text="'Nombre Jugador: '+${jugadorAntonio.nombre_jugador}"></p>
 	<p th:text="'Fecha de nacimiento: '+${jugadorAntonio.fecha_nac}"></p>
@@ -69,7 +69,7 @@
 	</div>
 	<h2 th:text="${juegosAntonio[0]}"></h2>
 	<div class="juego">
-	<img src="" alt="fotoJavilol" >
+	<img src="/images/Jugadores/lol.png" alt="fotoJavilol" >
 	
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
@@ -77,21 +77,21 @@
 	<div class="juego">
 	
 	
-	<img src="" alt="fotoAntoniovalorant" >
+	<img src="/images/Jugadores/lol.png" alt="fotoAntoniovalorant" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<h2 th:text="${juegosAntonio[2]}"></h2>
-	<div id="lol">
+	<div class="juego">
 
 	
-		<img src="" alt="fotoAntonioparchis" >
+		<img src="/images/Jugadores/lol.png" alt="fotoAntonioparchis" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<h2 th:text="${juegosAntonio[3]}"></h2>
 	<div class="juego">
 	
 	
-	<img src="" alt="fotoAntoniobraw" >
+	<img src="/images/Jugadores/lol.png" alt="fotoAntoniobraw" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	<div id="comentario">

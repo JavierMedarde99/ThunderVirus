@@ -354,14 +354,25 @@ public class RegistroUsuarioController {
 			return "registro";
 		}
 
-		try {
-			Path filepath = Path.of("C:\\Users\\IDB36\\eclipse-workspace\\ThunderVirus2\\src\\main\\resources\\static\\images\\perfile\\"+usuariodto.getUsername()+".png");
-			//Path filepath = Path.of("/resources/static/images/perfile/"+usuariodto.getUsername()+".png");
-			
-		file.transferTo(filepath);
-		}catch (Exception e) {
-			e.getMessage();
+		log.info("file : {}",usuariodto);
+		if(file!=null) {
+			try {
+				Path filepath = Path.of("src/main/resources/static/images/perfile/"+usuariodto.getUsername()+".png");
+				
+			file.transferTo(filepath);
+			}catch (Exception e) {
+				e.getMessage();
+			}
+		}else {
+			try {
+				Path filepath = Path.of("src/main/resources/static/images/perfile/avatar.png");
+				
+			file.transferTo(filepath);
+			}catch (Exception e) {
+				e.getMessage();
+			}
 		}
+		
 		
 		
 		usuarioService.saveUser(usuariodto);
@@ -378,8 +389,8 @@ public class RegistroUsuarioController {
 	      
 		try {
 			 foto = userName+"-"+int_random+".png";
-			Path filepath = Path.of("C:\\Users\\IDB36\\eclipse-workspace\\ThunderVirus2\\src\\main\\resources\\static\\images\\perfile\\"+foto);
-			//Path filepath = Path.of("/resources/static/images/perfile/"+usuariodto.getUsername()+".png");
+			 Path filepath = Path.of("src/main/resources/static/images/perfile/"+foto);
+			
 		file.transferTo(filepath);
 		}catch (Exception e) {
 			e.getMessage();
@@ -395,7 +406,7 @@ public class RegistroUsuarioController {
 		
 		if (reposiUsuario.checkUsuario(Usuarioupdate.getUsername()).isPresent()) {
 			model.addAttribute("ErrorUsuarioNombre", true);
-			return "perfil";
+			return "redirect:/perfil";
 		}
 		
 		

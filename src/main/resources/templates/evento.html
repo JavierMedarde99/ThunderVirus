@@ -63,7 +63,7 @@
 	
 	<div class="evento" th:each="eventos : ${evento}">
 	<h2 th:text="${eventos.nombre}"></h2>
-	<div id="eventoFoto"><img th:src="${eventos.foto_evento}" alt="fotoEvento"></div>
+	<div id="eventoFoto"><img th:src="'/images/events/'+${eventos.foto_evento}" alt="fotoEvento"></div>
 	<div id ="infoEvento">
 	
 	<p th:text="${eventos.descripcion}"></p>

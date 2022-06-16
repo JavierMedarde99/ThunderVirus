@@ -57,7 +57,7 @@
 	</header>
 	<main>
 	<div id="jugador">
-	<div id="fotoJugador"><img th:src="${jugadorAdri.foto}" alt="fotoAdri"></div>
+	<div id="fotoJugador"><img th:src="'/images/Jugadores/'+${jugadorAdri.foto}" alt="fotoAdri" id="imgJuga"></div>
 	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorAdri.nombre}"></p>
 	<p th:text="'Nombre Jugador: '+${jugadorAdri.nombre_jugador}"></p>
 	<p th:text="'Fecha de nacimiento: '+${jugadorAdri.fecha_nac}"></p>
@@ -70,7 +70,7 @@
 	<h2 th:text="${juegosAdri[0]}"></h2>
 
 	<div class="juego">
-	<img src="" alt="fotoAdrilol" >
+	<img src="/images/Jugadores/lol.png" alt="fotoAdrilol" >
 		<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	

@@ -50,7 +50,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 		if(check.isPresent()) {
 			Usuarios user =check.get();
 			user.setFile(foto);
-			usuarioRepository.save(user);
+			return usuarioRepository.save(user);
 		}
 		
 		return null;

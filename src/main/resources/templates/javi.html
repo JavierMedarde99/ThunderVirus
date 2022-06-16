@@ -58,7 +58,7 @@
 	<main>
 	<h1>Javi</h1>
 	<div id="jugador">
-	<div id="fotoJugador"><img th:src="${jugadorJavi.foto}" alt="fotoJavi"></div>
+	<div id="fotoJugador"><img th:src="'/images/Jugadores/'+${jugadorJavi.foto}" alt="fotoJavi" id="imgJuga"></div>
 	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorJavi.nombre}"></p>
 	<p th:text="'Nombre Jugador: '+${jugadorJavi.nombre_jugador}"></p>
 	<p th:text="'Fecha de nacimiento: '+${jugadorJavi.fecha_nac}"></p>
@@ -71,28 +71,28 @@
 	</div>
 	<h2 th:text="${juegosJavi[0]}"></h2>
 	<div class="juego">
-	<img src="" alt="fotoJavilol" >
+	<img src="/images/Jugadores/lol.png" alt="fotoJavilol" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 		<h2 th:text="${juegosJavi[1]}"></h2>
 	<div class="juego">
 	
 
-	<img src="" alt="fotoJavivalorant" >
+	<img src="/images/Jugadores/lol.png" alt="fotoJavivalorant" >
 	<p>Como main de rice es el tirador que mas se lanza a la lucha de la captura</p>
 	</div>
 		<h2 th:text="${juegosJavi[2]}"></h2>
 	<div class="juego">
 
 
-		<img src="" alt="fotoJaviparchis" >
+		<img src="/images/Jugadores/lol.png" alt="fotoJaviparchis" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 		<h2 th:text="${juegosJavi[3]}"></h2>
 	<div class="juego">
 	
 
-	<img src="" alt="fotoJavibraw" >
+	<img src="/images/Jugadores/lol.png" alt="fotoJavibraw" >
 	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
 	</div>
 	

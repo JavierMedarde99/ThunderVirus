@@ -87,6 +87,11 @@ div#quienesSomos{
 	width: 55%;
 }
 
+img#imgJuga{
+	width: 100%;
+	margin-top: 1rem;
+}
+
 h2{
 	text-align: center;
 }
@@ -100,10 +105,12 @@ div#jugadoresMain{
 	display:flex;
 	flex-flow: row wrap;
 	margin-bottom: 2rem;
+	justify-content: center;
 }
 
 div.jugadores{
 	width: 33%;
+	justify-content: center;
 }
 
 div.jugadores > h3{
@@ -294,6 +301,7 @@ div.contenido{
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: space-around; 
+	width: 50%;
 }
 
 div.contenidos{
@@ -331,4 +339,22 @@ div.juego > img{
 div#comentario{
 	display: flex;
 	justify-content: center;
+}
+
+img#imgtazas{
+	width: 30%;
+}
+
+img#imgcamiseta{
+	width: 30%;
+}
+
+img#imgJuga2{
+	width: 50%;
+	margin-left: 25%;
+}
+
+img#imgmain{
+	width: 50%;
+	margin-left: 25%;
 }

@@ -127,4 +127,9 @@ div#privacidad>p {
 		margin: 0;
 		padding: 0;
 	}
+	
+	img#imgLogin{
+	width: 100%;
+	height: 100%;
+	}
 }
