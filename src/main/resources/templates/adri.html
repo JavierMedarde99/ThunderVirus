@@ -89,10 +89,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" th:each="comentarios : ${comentarios}">
-   		
+      <div id="comentInfo">
+   		 <p th:text="'Usuario: '+${comentarios.nombre}"></p>
+                <p th:text="'Fecha del comentario: '+${comentarios.fecha}"></p>
+                </div>
+                <div id="comentario">
         <p th:text="${comentarios.comentario}"></p>
-                <p th:text="${comentarios.nombre}"></p>
-                <p th:text="${comentarios.fecha}"></p>
+               </div>
       </div>
       <div class="modal-footer">
       <form th:action="@{/anadirComentarioAdri}" method="post">

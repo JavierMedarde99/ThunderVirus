@@ -358,3 +358,13 @@ img#imgmain{
 	width: 50%;
 	margin-left: 25%;
 }
+
+div#comentInfo{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+div#comentario{
+	border: 1 solid grey;
+	width: 100%;
+	}
