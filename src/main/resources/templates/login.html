@@ -15,27 +15,27 @@
 <body>
 	<div id="mainRegistro">
 		<div id="videoThunder"><img src="/images/main.jpg" alt="principal" id="imgLogin"></div>
-		<div id="registro">
+		<div id="login">
 			<div id="cabecera">
 				<img src="images/thunder_virus_logo.png" class="img-fluid"
 					alt="Logo">
 			</div>
 			<div id="cuerpo">
 
-				<form class="row g-3 needs-validation" th:action="@{/login}" method="post" th:object="${usuariodto}">
-					<div class="mb-2 p-3">
+				<form class=" needs-validation" th:action="@{/login}" method="post" th:object="${usuariodto}">
+					<div id="usuario">
 						<label for="usuario" class="form-label">Usuario </label> <input
 							type="text" class="form-control" id="usuario" name="username"
 							required>
 					</div>
 
-					<div class="mb-3 p-3">
+					<div id="contraseña">
 						<label for="clave" class="form-label">Contraseña </label> <input
 							type="password" class="form-control" id="clave" name="password"
 							required>
 					</div>
 
-					<div class="mb-3 " id="boton">
+					<div  id="boton">
 						<button class="btn" type="submit">Registrarse</button>
 					</div>
 

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -65,6 +67,12 @@ public class RegistroUsuarioController {
 	public String mostrarLogin() {
 		return "login";
 	}
+	
+	@GetMapping("/pasarela")
+	public String mostrarPasarelaGet() {
+		return "pasarela";
+	}
+	
 
 	@GetMapping("/")
 	public String mostrarMain(@AuthenticationPrincipal CustomUserDetails userDetails,Model model) {
@@ -87,8 +95,9 @@ public class RegistroUsuarioController {
 	}
 	
 	@PostMapping("/pasarelaMercha")
-	public String mostrarPasarelaMercha(Model model,@RequestParam(name="precio") Double pago) {
+	public String mostrarPasarelaMercha(Model model,HttpSession sesion,@RequestParam(name="precio") Double pago) {
 		model.addAttribute("dinero", pago);
+		sesion.setAttribute("dinero", pago);
 		log.info("pago: {}",pago);
 		return "pasarelaMercha";
 	}
@@ -420,21 +429,26 @@ public class RegistroUsuarioController {
 	}
 	
 	@PostMapping("/pago")
-	public String subUser(@RequestParam("tarjetaCredito") int tarjetaCredito,@RequestParam("idusuario") long idUsuario) {
+	public String subUser(@RequestParam("tarjetaCredito") String tarjetaCredito,@RequestParam("idusuario") long idUsuario) {
 		
 		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
 		 usuarioService.subUser(tarjetaCreditoInt, idUsuario);
 		
-		return "redirect:/";
+		return "redirect:/pagoRealizado";
+	}
+	
+	@GetMapping("/pagoRealizado")
+	public String pagoReali() {
+		return "pagoRealizado";
 	}
 	
 	@PostMapping("/pagoMercha")
-	public String pagoMercha(@RequestParam("tarjetaCredito") int tarjetaCredito,@RequestParam("idusuario") long idUsuario,@RequestParam("precio") Double dinero) {
-		log.info("dinero: {}", dinero);
+	public String pagoMercha(@RequestParam("tarjetaCredito") String tarjetaCredito,@RequestParam("idusuario") long idUsuario,@RequestParam("precio") Double dinero) {
+		log.info("targeta : {}",tarjetaCredito);
 		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
 		 usuarioService.pagoMercha(tarjetaCreditoInt, idUsuario,dinero);
 		
-		return "redirect:/Merchandising";
+		 return "redirect:/pagoRealizado";
 	}
 	
 	@PostMapping("/unsub")
@@ -459,11 +473,24 @@ public class RegistroUsuarioController {
 	public String unirseAlEvento(@RequestParam("idusuario") long idUsuario,@RequestParam("idevento") Long idEvento) {
 		
 		if(reposiParticipacion.checkEvent(idUsuario, idEvento).isEmpty()) {
+			log.info("entra");
 			usuarioService.unirseEvento(idUsuario, idEvento);
+			return "redirect:/bienvenido";
 		}
-		
-		
-		return "redirect:/evento";
+
+
+	
+		return "redirect:/errorEvento";
+	}
+	
+	@GetMapping("/bienvenido")
+	public String bienvenidoEvento() {
+		return "bienvenidoEvento";
+	}
+	
+	@GetMapping("/errorEvento")
+	public String errorEvento() {
+		return "errorEvento";
 	}
 	
 	@PostMapping("/anadirComentarioJavi")

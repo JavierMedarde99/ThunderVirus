@@ -20,7 +20,7 @@ header{
 }
 
 div#cabecera{
-	height: 7rem;
+	height: 25%;
 	background-color: #A304F3;
 }
 
@@ -40,6 +40,10 @@ ul.navbar-nav{
 button.btn:hover {
 	background-color: #8103c1;
 	color: white;
+}
+
+main#realizado{
+	height: 56.1%;
 }
 
 li > a.disabled > p{
@@ -63,6 +67,24 @@ nav.navbar{
     padding: 0;
     width: 100%;
 }
+
+div#registro{
+	width: 30%;
+	height: 100%;
+	}
+
+div#cuerpo{
+	width: 100%;
+	height: 100%;
+}
+
+	div#videoThunder {
+	display: block;
+		width: 70%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
 
 img#avatar{
 	height: 2rem;
@@ -133,7 +155,7 @@ div.jugadores > a > p{
 footer{
 	background-color:  #A304F3;
 	width: 100%;
-	height: 25%;
+	height: 26%;
 	display: flex;
 	flex-flow: row nowrap;
 }
@@ -368,3 +390,9 @@ div#comentario{
 	border: 1 solid grey;
 	width: 100%;
 	}
+	
+div#butonPagado{
+	display: flex;
+	justify-content: center;
+	margin : 3rem;
+}

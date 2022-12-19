@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" lang="es">
-<title>registro</title>
+<title>Pasarela de pago</title>
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -14,32 +14,34 @@
 </head>
 <body>
 	<div id="mainRegistro">
-		<div id="videoThunder"></div>
+		<div id="videoThunder"><img src="/images/main.jpg" alt="principal" id="imgLogin"></div>
 		<div id="registro">
 			<div id="cabecera">
 				<img src="images/thunder_virus_logo.png" class="img-fluid"
 					alt="Logo">
 			</div>
-			<div id="cuerpo">
-				<form class="row g-3 needs-validation"
-				th:action="@{/pago}" method="post" th:object="${usuariodto}">
+			<div id="cuerpo-pasarela">
+				<form class="needs-validation"
+				th:action="@{/pago}" method="post" th:object="${usuariodto}" id="pasarela">
 					
-						<div class="mb-2 p-1">
+						<div class="pasarelaInputs">
 							<label for="tarjetaCredito" class="form-label">Tarjeta de crédito </label> <input
-								type="number" class="form-control" id="tarjetaCredito" name="tarjetaCredito" min-length=16 max-length=16 required>
+								type="text" class="form-control" id="tarjetaCredito" name="tarjetaCredito" min-length=16 max-length=16 required>
 						</div>
-						<div class="mb-2 p-1">
-							<label for="nombre" class="form-label">Fecha de caducidad</label> <input
-								type="number" class="form-control" id="mes" name="mes" min="1" max="12" required>
+						<div class="pasarelaInputs">
+							<label for="nombre" class="form-label">Fecha de caducidad</label> 
+							<div id= "fechaCaducidad">
+							<input type="number" class="form-control" id="mes" name="mes" min="1" max="12" required> <span id="barra">/</span>
 								<input type="number" class="form-control" id="mes" name="mes" min="1"  required>
+								</div>
 						</div>
-						<div class="mb-3 p-1">
+						<div class="pasarelaInputs">
 							<label for="email" class="form-label">CSV </label> <input
 								type="number" class="form-control" id="csv" name="csv" required>
 						</div>
 						<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
 						
-						<div class="mb-3 ">
+						<div class="pasarelaInputs" id="submit">
 							<button class="btn" type="submit">Pagar</button>
 						</div>
 					
@@ -67,7 +69,7 @@
 			</div>
 
 		</div>
-	</div>
+	
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
