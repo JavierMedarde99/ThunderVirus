@@ -6,4 +6,4 @@ FROM amazoncorretto:17-alpine-jdk
 COPY --from=build /target/ThunderVirus.jar ThunderVirus.jar
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","/ThunderVirus.jar", "org.springframework.boot.loader.launch.JarLauncher"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=pro","/ThunderVirus.jar", "org.springframework.boot.loader.launch.JarLauncher"]
