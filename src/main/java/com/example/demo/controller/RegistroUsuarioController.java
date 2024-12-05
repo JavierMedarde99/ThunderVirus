@@ -431,8 +431,7 @@ public class RegistroUsuarioController {
 	@PostMapping("/pago")
 	public String subUser(@RequestParam("tarjetaCredito") String tarjetaCredito,@RequestParam("idusuario") long idUsuario) {
 		
-		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
-		 usuarioService.subUser(tarjetaCreditoInt, idUsuario);
+		 usuarioService.subUser(tarjetaCredito, idUsuario);
 		
 		return "redirect:/pagoRealizado";
 	}
@@ -445,8 +444,7 @@ public class RegistroUsuarioController {
 	@PostMapping("/pagoMercha")
 	public String pagoMercha(@RequestParam("tarjetaCredito") String tarjetaCredito,@RequestParam("idusuario") long idUsuario,@RequestParam("precio") Double dinero) {
 		log.info("targeta : {}",tarjetaCredito);
-		Integer tarjetaCreditoInt = Integer.valueOf(tarjetaCredito);
-		 usuarioService.pagoMercha(tarjetaCreditoInt, idUsuario,dinero);
+		 usuarioService.pagoMercha(tarjetaCredito, idUsuario,dinero);
 		
 		 return "redirect:/pagoRealizado";
 	}

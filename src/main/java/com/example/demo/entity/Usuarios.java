@@ -35,7 +35,7 @@ public class Usuarios {
 	
 	//la parte del usuario subcriptor
 	private double dinero;
-	private int tarjetaCredito;
+	private String tarjetaCredito;
 	private double tarifa;
 	private Timestamp fecha_ini_sub;
 	private Timestamp fecha_fin_sub;

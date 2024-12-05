@@ -14,9 +14,9 @@ import com.example.demo.entity.Merchandising;
 @Repository
 public interface RepositoryMerchandising extends JpaRepository<Merchandising, Long>{
 	
-	@Query(value= "SELECT * FROM merchandising WHERE tipo='tazas'",nativeQuery=true)
+	@Query(value= "SELECT * FROM merchandising WHERE nombre='tazas'",nativeQuery=true)
 	List<Merchandising> tazas();
 	
-	@Query(value= "SELECT * FROM merchandising WHERE tipo='camisetas'",nativeQuery=true)
+	@Query(value= "SELECT * FROM merchandising WHERE nombre='camisetas'",nativeQuery=true)
 	List<Merchandising> camisetas();
 }

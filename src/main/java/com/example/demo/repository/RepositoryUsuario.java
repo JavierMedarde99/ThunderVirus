@@ -22,8 +22,5 @@ public interface RepositoryUsuario extends JpaRepository<Usuarios, Long>{
 	@Query(value= "SELECT * FROM usuarios WHERE username =:username and password =:password",nativeQuery=true)
 	Optional<Usuarios> checkbdUsusario(@Param("username")String usuario,@Param("password")String clave);
 	
-	
-	
-	
 	  Optional<Usuarios> findByUsername(String username);
 }

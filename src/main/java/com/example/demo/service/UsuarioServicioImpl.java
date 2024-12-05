@@ -78,7 +78,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 	}
 	
 	@Override
-	public Usuarios subUser(Integer tarjetaCredito,long idUsuario) {
+	public Usuarios subUser(String tarjetaCredito,long idUsuario) {
 		 Usuarios subUser =  usuarioRepository.checkId(idUsuario).get();
 		 Timestamp ts = Timestamp.from(Instant.now());
 		 if(subUser.getDinero()!=0) {
@@ -103,7 +103,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 subUser.setDinero(0);
 		 subUser.setSub(false);
 		 subUser.setTarifa(0);
-		 subUser.setTarjetaCredito(0);
+		 subUser.setTarjetaCredito("");
 		 subUser.setFecha_fin_sub(ts);
 		 
 		 return usuarioRepository.save(subUser);
@@ -125,7 +125,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 	}
 	
 	@Override
-	public Usuarios pagoMercha(Integer tarjetaCredito,long idUsuario,Double precio) {
+	public Usuarios pagoMercha(String tarjetaCredito,long idUsuario,Double precio) {
 		 Usuarios subUser =  usuarioRepository.checkId(idUsuario).get();
 		 if(subUser.getDinero()!=0) {
 			 subUser.setDinero(subUser.getDinero()+precio);

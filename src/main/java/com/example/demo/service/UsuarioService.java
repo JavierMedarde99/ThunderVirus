@@ -14,9 +14,9 @@ public interface UsuarioService {
 	
 	public Usuarios updateUser(UsuarioUpdate usuarioUpdate);
 	
-	public Usuarios subUser(Integer tarjetaCredito,long idUsuario);
+	public Usuarios subUser(String tarjetaCredito,long idUsuario);
 	
-	public Usuarios pagoMercha(Integer tarjetaCredito,long idUsuario,Double precio);
+	public Usuarios pagoMercha(String tarjetaCredito,long idUsuario,Double precio);
 	
 	public Usuarios unsubUser(long idUsuario);
 	
