@@ -2,8 +2,11 @@ package com.example.demo.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,11 +21,15 @@ import lombok.NoArgsConstructor;
 public class Comentarios {
 
 	@Id
-	
 	private long id;
 	
-	private Long id_usu;
-	private Long id_jugador;
+	@ManyToOne
+    @JoinColumn(name = "id_usu")
+    private Usuarios usuarios;
+	@ManyToOne
+    @JoinColumn(name = "id_jugador")
+	private Jugadores jugador;
 	private String comentario;
-	private Timestamp fecha_coment;
+	@Column(name = "fecha_coment")
+	private Timestamp fechaComent;
 }

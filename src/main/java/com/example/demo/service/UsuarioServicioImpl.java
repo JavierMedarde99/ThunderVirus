@@ -5,32 +5,41 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
 import com.example.demo.entity.Comentarios;
 import com.example.demo.entity.Participacion;
 import com.example.demo.entity.Usuarios;
-import com.example.demo.repository.RepositoryComentarios;
+import com.example.demo.model.CustomUserDetails;
+import com.example.demo.repository.Repositorycomentarios;
+import com.example.demo.utils.Constants;
+
+import lombok.RequiredArgsConstructor;
+
+import com.example.demo.repository.RepositoryEvento;
+import com.example.demo.repository.RepositoryJugadores;
 import com.example.demo.repository.RepositoryParticipacion;
 import com.example.demo.repository.RepositoryUsuario;
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioServicioImpl implements UsuarioService{
 	
-	final Double tarifa=5.0;
 	
-	@Autowired
-	private RepositoryUsuario usuarioRepository;
 	
-	@Autowired
-	private RepositoryParticipacion Repositoryparticipacion;
+	private final RepositoryUsuario usuarioRepository;
 	
-	@Autowired
-	private RepositoryComentarios Repositorycomentarios;
+	private final RepositoryParticipacion repositoryparticipacion;
+	
+	private final Repositorycomentarios repositorycomentarios;
+
+	private final RepositoryEvento repositoryEvento;
+
+	private final RepositoryJugadores reposiJugadores;
 	
 	@Override
 	public Usuarios saveUser(UsuarioRegistroDTO registroDTO) {
@@ -71,7 +80,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 if(usuarioUpdate.getPassword() !=null) {
 			 changeUser.setPassword(usuarioUpdate.getPassword2());
 		 }
-		 changeUser.setFecha_nac(usuarioUpdate.getFecha_nac());
+		 changeUser.setFechaNac(usuarioUpdate.getFechaNac());
 		 
 		 return usuarioRepository.save(changeUser);
 		 
@@ -82,16 +91,16 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 Usuarios subUser =  usuarioRepository.checkId(idUsuario).get();
 		 Timestamp ts = Timestamp.from(Instant.now());
 		 if(subUser.getDinero()!=0) {
-			 subUser.setDinero(subUser.getDinero()+tarifa);
+			 subUser.setDinero(subUser.getDinero()+Constants.TARIFA);
 		 }else {
-			 subUser.setDinero(tarifa);
+			 subUser.setDinero(Constants.TARIFA);
 		 }
 		 
 		 subUser.setSub(true);
-		 subUser.setTarifa(tarifa);
+		 subUser.setTarifa(Constants.TARIFA);
 		 subUser.setTarjetaCredito(tarjetaCredito);
-		 subUser.setFecha_ini_sub(ts);
-		 subUser.setFecha_fin_sub(null);
+		 subUser.setFechaIniSub(ts);
+		 subUser.setFechaFinSub(null);
 		 
 		return usuarioRepository.save(subUser);
 	}
@@ -104,7 +113,7 @@ public class UsuarioServicioImpl implements UsuarioService{
 		 subUser.setSub(false);
 		 subUser.setTarifa(0);
 		 subUser.setTarjetaCredito("");
-		 subUser.setFecha_fin_sub(ts);
+		 subUser.setFechaFinSub(ts);
 		 
 		 return usuarioRepository.save(subUser);
 	}
@@ -113,15 +122,16 @@ public class UsuarioServicioImpl implements UsuarioService{
 	public Participacion unirseEvento(long idUsuario,Long idEvento) {
 		Timestamp ts = Timestamp.from(Instant.now());
 		Participacion part = new Participacion();
-		part.setId_evento(idEvento);
-		part.setId_usu(idUsuario);
-		part.setFecha_part(ts);
-		if(part.getNum_part()!=1) {
-			part.setNum_part(part.getNum_part()+1);
-		}
-		part.setNum_part(1);
 		
-		return Repositoryparticipacion.save(part);
+		part.setEvento(repositoryEvento.findById(idEvento).get());
+		part.setUsuarios(usuarioRepository.findById(idUsuario).get());
+		part.setFechaPart(ts);
+		if(part.getNumPart()!=1) {
+			part.setNumPart(part.getNumPart()+1);
+		}
+		part.setNumPart(1);
+		
+		return repositoryparticipacion.save(part);
 	}
 	
 	@Override
@@ -140,10 +150,25 @@ public class UsuarioServicioImpl implements UsuarioService{
 	public Comentarios anadirComen(long idUsuario,Long idJugador,String comentario) {
 		Comentarios coment = new Comentarios();
 		Timestamp ts = Timestamp.from(Instant.now());
-		coment.setId_jugador(idJugador);
-		coment.setId_usu(idUsuario);
+		
+		coment.setJugador(reposiJugadores.findById(idJugador).get());
+		coment.setUsuarios(usuarioRepository.findById(idUsuario).get());
 		coment.setComentario(comentario);
-		coment.setFecha_coment(ts);
-		return Repositorycomentarios.save(coment);
+		coment.setFechaComent(ts);
+		return repositorycomentarios.save(coment);
 	}
+
+	@Override
+	public void checkSub(Model model,CustomUserDetails userDetails){
+		if(usuarioRepository.checkUsuario(userDetails.getUsername()).isPresent()) {
+		Usuarios usu = usuarioRepository.checkUsuario(userDetails.getUsername()).get();
+		
+		if(usu.isSub()) {
+			model.addAttribute("EsSub", true);
+		}else {
+			model.addAttribute("NoSub", true);
+		}
+	}
+	}
+	
 }

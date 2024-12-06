@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import org.springframework.ui.Model;
+
 import com.example.demo.dto.UsuarioRegistroDTO;
 import com.example.demo.dto.UsuarioUpdate;
 import com.example.demo.entity.Comentarios;
 import com.example.demo.entity.Participacion;
 import com.example.demo.entity.Usuarios;
+import com.example.demo.model.CustomUserDetails;
 
 public interface UsuarioService {
 
@@ -23,5 +26,7 @@ public interface UsuarioService {
 	public Participacion unirseEvento(long idUsuario,Long idEvento);
 	
 	public Comentarios anadirComen(long idUsuario,Long idJugador,String comentario); 
+
+	public void checkSub(Model model,CustomUserDetails userDetails);
 	
 }

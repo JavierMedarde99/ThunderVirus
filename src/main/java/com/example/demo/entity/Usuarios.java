@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,29 +28,35 @@ public class Usuarios {
 	private String password;
 	private String email;
 	private String file;
+	@Column(name = "nombre_completo")
 	private String nombreCompleto;
-	private String fecha_nac;
-	private Timestamp fecha_ini_usu;
-	private Timestamp fecha_fin_usu;
+	@Column(name = "fecha_nac")
+	private String fechaNac;
+	@Column(name = "fecha_ini_usu")
+	private Timestamp fechaIniUsu;
+	@Column(name = "fecha_fin_usu")
+	private Timestamp fechaFinUsu;
 	private boolean sub;
 	
 	//la parte del usuario subcriptor
 	private double dinero;
-	private String tarjetaCredito;
+	private String tarjetaCredito ="";
 	private double tarifa;
-	private Timestamp fecha_ini_sub;
-	private Timestamp fecha_fin_sub;
+	@Column(name = "fecha_ini_sub")
+	private Timestamp fechaIniSub;
+	@Column(name = "fecha_fin_sub")
+	private Timestamp fechaFinSub;
 	
 	//registro
-	public Usuarios(String usuario, String clave,String file, String email, String nombreCompleto, String fecha_nac,Timestamp fecha_ini_usu) {
+	public Usuarios(String usuario, String clave,String file, String email, String nombreCompleto, String fechaNac,Timestamp fechaIniUsu) {
 		super();
 		this.username = usuario;
 		this.password = clave;
 		this.file=file;
 		this.email = email;
 		this.nombreCompleto = nombreCompleto;
-		this.fecha_nac = fecha_nac;
-		this.fecha_ini_usu = fecha_ini_usu;
+		this.fechaNac = fechaNac;
+		this.fechaIniUsu = fechaIniUsu;
 	}
 	
 	

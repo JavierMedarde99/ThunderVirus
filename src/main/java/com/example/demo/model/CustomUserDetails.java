@@ -15,7 +15,7 @@ public class CustomUserDetails implements UserDetails{
 	        this.user = user;
 	    }
 	 
-	 @Override
+	 	@Override
 	    public Collection<? extends GrantedAuthority> getAuthorities() {
 	        return null;
 	    }
@@ -34,7 +34,7 @@ public class CustomUserDetails implements UserDetails{
 	        return user.getFile();
 	    }
 	    
-	    public String getNombre_completo() {
+	    public String getNombreCompleto() {
 	        return user.getNombreCompleto();
 	    }
 	    
@@ -46,8 +46,8 @@ public class CustomUserDetails implements UserDetails{
 	    	return user.getId();
 	    }
 	    
-	    public String getFech_nac() {
-	    	return user.getFecha_nac();
+	    public String getFechNac() {
+	    	return user.getFechaNac();
 	    }
 	    
 	    @Override

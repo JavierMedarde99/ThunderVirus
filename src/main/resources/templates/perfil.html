@@ -73,7 +73,7 @@
 			<form th:action="@{/cambio}" method="post" id="form-perfil" th:object="${UsuarioUpdate}">
 				<div id="izq-form">
 					<label for="nombre" class="form-label">Nombre completo </label> <input
-						type="text" class="form-control" id="nombre" name="nombreCompleto" th:placeholder="${#request.userPrincipal.principal.nombre_completo}"
+						type="text" class="form-control" id="nombre" name="nombreCompleto" th:placeholder="${#request.userPrincipal.principal.nombreCompleto}"
 						required> <label for="usuario" class="form-label">Usuario
 					</label> <input type="text" class="form-control" id="usuario" th:placeholder="${#request.userPrincipal.principal.username}"
 						name="username" required> <label for="clave"
@@ -88,7 +88,7 @@
 					</label> <input type="email" class="form-control" id="email" th:placeholder="${#request.userPrincipal.principal.email}"
 						placeholder="nombre@ejemplo.com" name="email" required> <label
 						for="fech_nac" class="form-label">Fecha de nacimiento </label> <input
-						type="date" class="form-control" id="fech_nac" name="fecha_nac" th:placeholder="${#request.userPrincipal.principal.fech_nac}"
+						type="date" class="form-control" id="fech_nac" name="fecha_nac" th:placeholder="${#request.userPrincipal.principal.fechNac}"
 						required>
 						<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
 				</div>

@@ -10,7 +10,7 @@ import com.example.demo.entity.Comentarios;
 
 
 
-public interface RepositoryComentarios extends JpaRepository<Comentarios, Long>{
+public interface Repositorycomentarios extends JpaRepository<Comentarios, Long>{
 	@Query(value= "SELECT * FROM comentarios WHERE id_jugador=1 ",nativeQuery=true)
 	List<Comentarios> javiComent();
 	

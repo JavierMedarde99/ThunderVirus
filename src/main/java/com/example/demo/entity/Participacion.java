@@ -2,10 +2,13 @@ package com.example.demo.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -24,8 +27,13 @@ public class Participacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private long id_usu;
-	private long id_evento;
-	private Timestamp fecha_part;
-	private int num_part;
+	@ManyToOne
+    @JoinColumn(name = "id_usu")
+    private Usuarios usuarios;
+	@ManyToOne
+    @JoinColumn(name = "id_evento")
+    private Evento evento;
+	@Column(name = "fecha_part")
+	private Timestamp fechaPart;
+	private int numPart;
 }

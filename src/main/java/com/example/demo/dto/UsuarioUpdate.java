@@ -21,6 +21,6 @@ public class UsuarioUpdate {
 	
 	private String email;
 	
-	private String fecha_nac;
+	private String fechaNac;
 	
 }
