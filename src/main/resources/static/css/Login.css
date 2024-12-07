@@ -11,7 +11,9 @@ html, body {
 	height: 100%;
 
 }
-
+div#login{
+	width: 100%;
+	}
 div#mainRegistro {
 	display: flex;
 	flex-flow: row nowrap;
