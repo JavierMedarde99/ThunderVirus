@@ -398,7 +398,7 @@ div#butonPagado{
 	margin : 3rem;
 }
 
-@media all and (min-width: 600px) {
+@media all and (max-width: 600px) {
 	main{
 		height: 100%;
 		display: flex;
