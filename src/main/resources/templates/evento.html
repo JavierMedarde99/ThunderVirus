@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" lang="es">
-<title>Inicio</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-	crossorigin="anonymous">
 
-<LINK REL=StyleSheet HREF=css/main.css TYPE="text/css" MEDIA=screen>
+<head>
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	<meta charset="utf-8" lang="es">
+	<title>Inicio</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+	<LINK REL=StyleSheet HREF=css/main.css TYPE="text/css" MEDIA=screen>
 </head>
+
 <body>
-<header>
+	<header>
 		<!-- Logog -->
 		<div id="cabecera">
-			<a th:href="@{/}"><img  src="images/thunder_virus_logo.png"
-				class="img-fluid logo" alt="Logo"></a>
+			<a th:href="@{/}"><img src="images/thunder_virus_logo.png" class="img-fluid logo" alt="Logo"></a>
 		</div>
 		<!-- menu de la pagina -->
 		<nav class="navbar navbar-expand bg-light">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav m-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" th:href="@{/perfil}"><img id="avatar"
-								th:src="'/images/perfile/'+${#request.userPrincipal.principal.file}" alt="avatar"></a></li>
-						<li class="nav-item"><a class="nav-link active"
-							th:href="@{/}"><p>Inicio</p></a></li>
-						<li class="nav-item"><a th:if="${NoSub}" class="nav-link disabled"
-							th:href="@{/evento}"><p>Evento</p></a><a th:if="${EsSub}" class="nav-link active"
-							th:href="@{/evento}"><p>Evento</p></a></li>
-						<li class="nav-item dropdown" id="jugadores"><a
-							class="nav-link dropdown-toggle d-flex" href="#"
-							id="navbarDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/perfil}"><img
+									id="avatar" th:src="'/images/perfile/'+${#request.userPrincipal.principal.file}"
+									alt="avatar"></a></li>
+						<li class="nav-item"><a class="nav-link active" th:href="@{/}">
+								<p>Inicio</p>
+							</a></li>
+						<li class="nav-item"><a th:if="${NoSub}" class="nav-link disabled" th:href="@{/evento}">
+								<p>Evento</p>
+							</a><a th:if="${EsSub}" class="nav-link active" th:href="@{/evento}">
+								<p>Evento</p>
+							</a></li>
+						<li class="nav-item dropdown" id="jugadores"><a class="nav-link dropdown-toggle d-flex" href="#"
+								id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
 								<p class="mr-1">Jugadores</p>
-						</a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/javi}"><p>Javi</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link active"
-							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/javi}">
+										<p>Javi</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/ivan}">
+										<p>Ivan</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/antonio}">
+										<p>Antonio</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/angie}">
+										<p>Angie</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}">
+										<p>Adrian</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}">
+										<p>Toño</p>
+									</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link active" th:href="@{/Merchandising}">
+								<p>Merchandising</p>
+							</a></li>
 
 					</ul>
 
@@ -56,53 +70,53 @@
 		</nav>
 	</header>
 	<main>
-	
-	<h1>Eventos</h1>
-	<div id="eventos"  >
-	
-	
-	<div class="evento" th:each="eventos : ${evento}">
-	<h2 th:text="${eventos.nombre}"></h2>
-	<div id="eventoFoto"><img th:src="'/images/events/'+${eventos.fotoEvento}" alt="fotoEvento"></div>
-	<div id ="infoEvento">
-	
-	<p th:text="${eventos.descripcion}"></p>
-	<p th:text="'El premio es '+${eventos.premio}"></p> 
-	<form th:action="@{/unirseEvento}" method="post">
-	<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
-	<input type="hidden" name="idevento" th:value="${eventos.id}">
-	
-	<button class="btn" >Unirte al evento</button>
-	</form>
-	
-	</div>
 
-	</div>
-	</div>
+		<h1>Eventos</h1>
+		<div id="eventos">
+
+
+			<div class="evento" th:each="eventos : ${evento}">
+				<h2 th:text="${eventos.nombre}"></h2>
+				<div id="eventoFoto"><img th:src="'/images/events/'+${eventos.fotoEvento}" alt="fotoEvento"></div>
+				<div id="infoEvento">
+
+					<p th:text="${eventos.descripcion}"></p>
+					<p th:text="'El premio es '+${eventos.premio}"></p>
+					<form th:action="@{/unirseEvento}" method="post">
+						<input type="hidden" name="idusuario" th:value="${#request.userPrincipal.principal.idUsuario}">
+						<input type="hidden" name="idevento" th:value="${eventos.id}">
+
+						<button class="btn">Unirte al evento</button>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
 	</main>
 	<!-- Pie de pagina -->
 	<footer>
 		<div id="socialMedia">
-			<img class="icon" src="images/instagram.png" alt="instagram"> 
-			<img class="icon" src="images/youtube.png" alt="youtube"> 
-			<img class="icon" src="images/twitch.png" alt="twitch"> 
-			<img class="icon" src="images/twitter.png" alt="twitter"> 
+			<img class="icon" src="images/instagram.png" alt="instagram">
+			<img class="icon" src="images/youtube.png" alt="youtube">
+			<img class="icon" src="images/twitch.png" alt="twitch">
+			<img class="icon" src="images/twitter.png" alt="twitter">
 			<img class="icon" src="images/tiktok.png" alt="tiktok">
 		</div>
 		<div id="logoFooter">
-		<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
-				<p>copyright © todos los derechos reservados 2022</p>
+			<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
+			<p>copyright © todos los derechos reservados 2022</p>
 		</div>
 		<div id="politica">
-		<p>Aviso legal</p>
-		<p>Política de cookies</p>
-		<p>Política de privacidad</p>
+			<p>Aviso legal</p>
+			<p>Política de cookies</p>
+			<p>Política de privacidad</p>
 		</div>
 	</footer>
 	<!-- fin del pie de pagina -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
 </body>
+
 </html>

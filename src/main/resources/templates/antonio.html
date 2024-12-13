@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" lang="es">
-<title>Inicio</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-	crossorigin="anonymous">
 
-<LINK REL=StyleSheet HREF=css/main.css TYPE="text/css" MEDIA=screen>
+<head>
+	<meta charset="utf-8" lang="es">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	<title>Inicio</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+	<LINK REL=StyleSheet HREF=css/main.css TYPE="text/css" MEDIA=screen>
 </head>
+
 <body>
 	<header>
 		<!-- Logog -->
 		<div id="cabecera">
-			<a th:href="@{/}"><img  src="images/thunder_virus_logo.png"
-				class="img-fluid logo" alt="Logo"></a>
+			<a th:href="@{/}"><img src="images/thunder_virus_logo.png" class="img-fluid logo" alt="Logo"></a>
 		</div>
 		<!-- menu de la pagina -->
 		<nav class="navbar navbar-expand bg-light">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav m-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" th:href="@{/perfil}"><img id="avatar"
-								th:src="'/images/perfile/'+${#request.userPrincipal.principal.file}" alt="avatar"></a></li>
-						<li class="nav-item"><a class="nav-link active"
-							th:href="@{/}"><p>Inicio</p></a></li>
-						<li class="nav-item"><a th:if="${NoSub}" class="nav-link disabled"
-							th:href="@{/evento}"><p>Evento</p></a><a th:if="${EsSub}" class="nav-link active"
-							th:href="@{/evento}"><p>Evento</p></a></li>
-						<li class="nav-item dropdown" id="jugadores"><a
-							class="nav-link dropdown-toggle d-flex" href="#"
-							id="navbarDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/perfil}"><img
+									id="avatar" th:src="'/images/perfile/'+${#request.userPrincipal.principal.file}"
+									alt="avatar"></a></li>
+						<li class="nav-item"><a class="nav-link active" th:href="@{/}">
+								<p>Inicio</p>
+							</a></li>
+						<li class="nav-item"><a th:if="${NoSub}" class="nav-link disabled" th:href="@{/evento}">
+								<p>Evento</p>
+							</a><a th:if="${EsSub}" class="nav-link active" th:href="@{/evento}">
+								<p>Evento</p>
+							</a></li>
+						<li class="nav-item dropdown" id="jugadores"><a class="nav-link dropdown-toggle d-flex" href="#"
+								id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
 								<p class="mr-1">Jugadores</p>
-						</a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<li><a class="dropdown-item" th:href="@{/javi}"><p>Javi</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/ivan}"><p>Ivan</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/antonio}"><p>Antonio</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/angie}"><p>Angie</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/adri}"><p>Adrian</p></a></li>
-								<li><a class="dropdown-item" th:href="@{/tono}"><p>Toño</p></a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link active"
-							th:href="@{/Merchandising}"><p>Merchandising</p></a></li>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li><a class="dropdown-item" th:href="@{/javi}">
+										<p>Javi</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/ivan}">
+										<p>Ivan</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/antonio}">
+										<p>Antonio</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/angie}">
+										<p>Angie</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/adri}">
+										<p>Adrian</p>
+									</a></li>
+								<li><a class="dropdown-item" th:href="@{/tono}">
+										<p>Toño</p>
+									</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link active" th:href="@{/Merchandising}">
+								<p>Merchandising</p>
+							</a></li>
 
 					</ul>
 
@@ -56,105 +70,116 @@
 		</nav>
 	</header>
 	<main>
-	<div id="jugador">
-	<div id="fotoJugador"><img th:src="'/images/Jugadores/'+${jugadorAntonio.foto}" alt="fotoAntonio" id="imgJuga"></div>
-	<div id="perfilJugador"><p th:text="'Nombre: '+${jugadorAntonio.nombre}"></p>
-	<p th:text="'Nombre Jugador: '+${jugadorAntonio.nombreJugador}"></p>
-	<p th:text="'Fecha de nacimiento: '+${jugadorAntonio.fechaNac}"></p>
-	<p th:text="'Fecha de nacimiento: '+${jugadorAntonio.juegos}"></p></div>
-	<div id="carrera">
-	<h2>Carrera del jugador</h2>
-	<p>Javier el que inicio toda la empresa.Empeza hace unos años en el mundillo de los esport pero ha sido sorprendente el avance de este jugador en este mundillo y como es capaz de hacer lo imposible en cuanto hay peligro en la partida</p>
-	</div>
-	</div>
-	<h2 th:text="${juegosAntonio[0]}"></h2>
-	<div class="juego">
-	<img src="/images/Jugadores/lol.png" alt="fotoJavilol" >
-	
-	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
-	</div>
-	<h2 th:text="${juegosAntonio[1]}"></h2>
-	<div class="juego">
-	
-	
-	<img src="/images/Jugadores/lol.png" alt="fotoAntoniovalorant" >
-	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
-	</div>
-	<h2 th:text="${juegosAntonio[2]}"></h2>
-	<div class="juego">
+		<div id="jugador">
+			<div id="fotoJugador"><img th:src="'/images/Jugadores/'+${jugadorAntonio.foto}" alt="fotoAntonio"
+					id="imgJuga"></div>
+			<div id="perfilJugador">
+				<p th:text="'Nombre: '+${jugadorAntonio.nombre}"></p>
+				<p th:text="'Nombre Jugador: '+${jugadorAntonio.nombreJugador}"></p>
+				<p th:text="'Fecha de nacimiento: '+${jugadorAntonio.fechaNac}"></p>
+				<p th:text="'Fecha de nacimiento: '+${jugadorAntonio.juegos}"></p>
+			</div>
+			<div id="carrera">
+				<h2>Carrera del jugador</h2>
+				<p>Javier el que inicio toda la empresa.Empeza hace unos años en el mundillo de los esport pero ha sido
+					sorprendente el avance de este jugador en este mundillo y como es capaz de hacer lo imposible en
+					cuanto hay peligro en la partida</p>
+			</div>
+		</div>
+		<h2 th:text="${juegosAntonio[0]}"></h2>
+		<div class="juego">
+			<img src="/images/Jugadores/lol.png" alt="fotoJavilol">
 
-	
-		<img src="/images/Jugadores/lol.png" alt="fotoAntonioparchis" >
-	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
-	</div>
-	<h2 th:text="${juegosAntonio[3]}"></h2>
-	<div class="juego">
-	
-	
-	<img src="/images/Jugadores/lol.png" alt="fotoAntoniobraw" >
-	<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos. Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
-	</div>
-	<div id="comentario">
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Ver comentarios
-</button>
-	</div>
-	<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Comentarios</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" th:each="comentarios : ${comentarios}">
-       <div id="comentInfo">
-   		 <p th:text="${comentarios.nombre}"></p>
-                <p th:text="${comentarios.fecha}"></p>
-            </div>    
-        <p th:text="${comentarios.comentario}"></p>
-               
-      </div>
-      <div class="modal-footer">
-      <form th:action="@{/anadirComentarioAntonio}" method="post">
-      <textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea" name="comentario"></textarea>
-      <input type="hidden" clas="btn" name="id_jugador" th:value="${jugadorAntonio.id}">
-      <input type="hidden" clas="btn" name="id_usu" th:value="${#request.userPrincipal.principal.idUsuario}">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-     <button type="submit" class="btn" >añadir comentario</button>
-      
-        
-       </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- fin Modal -->
+			<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos.
+				Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
+		</div>
+		<h2 th:text="${juegosAntonio[1]}"></h2>
+		<div class="juego">
+
+
+			<img src="/images/Jugadores/lol.png" alt="fotoAntoniovalorant">
+			<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos.
+				Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
+		</div>
+		<h2 th:text="${juegosAntonio[2]}"></h2>
+		<div class="juego">
+
+
+			<img src="/images/Jugadores/lol.png" alt="fotoAntonioparchis">
+			<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos.
+				Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
+		</div>
+		<h2 th:text="${juegosAntonio[3]}"></h2>
+		<div class="juego">
+
+
+			<img src="/images/Jugadores/lol.png" alt="fotoAntoniobraw">
+			<p>El ADC del equipo con su main de tristana es el mejor tirador de toda España en busca de nuevos retos.
+				Siempre muy unido al equipo el segundo jugador estrella del equipo</p>
+		</div>
+		<div id="comentario">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Ver comentarios
+			</button>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Comentarios</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" th:each="comentarios : ${comentarios}">
+						<div id="comentInfo">
+							<p th:text="${comentarios.nombre}"></p>
+							<p th:text="${comentarios.fecha}"></p>
+						</div>
+						<p th:text="${comentarios.comentario}"></p>
+
+					</div>
+					<div class="modal-footer">
+						<form th:action="@{/anadirComentarioAntonio}" method="post">
+							<textarea class="form-control" placeholder="Comentarios aqui!!!" id="floatingTextarea"
+								name="comentario"></textarea>
+							<input type="hidden" clas="btn" name="id_jugador" th:value="${jugadorAntonio.id}">
+							<input type="hidden" clas="btn" name="id_usu"
+								th:value="${#request.userPrincipal.principal.idUsuario}">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn">añadir comentario</button>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- fin Modal -->
 	</main>
-	
+
 	<!-- Pie de pagina -->
 	<footer>
 		<div id="socialMedia">
-			<img class="icon" src="images/instagram.png" alt="instagram"> 
-			<img class="icon" src="images/youtube.png" alt="youtube"> 
-			<img class="icon" src="images/twitch.png" alt="twitch"> 
-			<img class="icon" src="images/twitter.png" alt="twitter"> 
+			<img class="icon" src="images/instagram.png" alt="instagram">
+			<img class="icon" src="images/youtube.png" alt="youtube">
+			<img class="icon" src="images/twitch.png" alt="twitch">
+			<img class="icon" src="images/twitter.png" alt="twitter">
 			<img class="icon" src="images/tiktok.png" alt="tiktok">
 		</div>
 		<div id="logoFooter">
-		<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
-				<p>copyright © todos los derechos reservados 2022</p>
+			<img class="img-fluid logo" src="images/thunder_virus_logo.png" alt="Logo">
+			<p>copyright © todos los derechos reservados 2022</p>
 		</div>
 		<div id="politica">
-		<p>Aviso legal</p>
-		<p>Política de cookies</p>
-		<p>Política de privacidad</p>
+			<p>Aviso legal</p>
+			<p>Política de cookies</p>
+			<p>Política de privacidad</p>
 		</div>
 	</footer>
 	<!-- fin del pie de pagina -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
 </body>
+
 </html>
