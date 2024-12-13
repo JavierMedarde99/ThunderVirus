@@ -1,11 +1,21 @@
 
 
 services:
+  java:
+    build: 
+      context: .
+      dockerfile: 'Dockerfile local'
+    ports:
+      - '8080:8080'
+    restart: always
+
+
   postgresql:
     image: docker.io/bitnami/postgresql:17
     ports:
       - '5432:5432'
     restart: always
+    hostname: 'database'
     volumes:
       - 'postgresql_data:/bitnami/postgresql'
     environment:
