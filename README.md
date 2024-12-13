@@ -10,8 +10,7 @@ Proyecto final de DAW
   - Por ultimo, hacer maven clean y install para que se traiga todas las dependencia y arrancarlo en el perfil local
 ### Con Docker
   - Primero instalar Docker (https://docs.docker.com/get-started/get-docker/)
-  - Instalar el Docker-Compose ya que ahi se generara la base de datos local
-  - por ultimo costruir el Docker con el Dockerfile
+  - Instalar el Docker-Compose ya que ahi se generara la base de datos y el java. Solo que hay que ejecutar el sql ya que tiene datos importantes para el perfecto comportamiento de la pagina
 
 ## Despliege en perfil de produccion
  - Primero generar un .env con las credenciales de la bbdd que tiene que ser postgress
